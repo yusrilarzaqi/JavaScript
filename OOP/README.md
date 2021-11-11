@@ -68,7 +68,6 @@ function Person() {
 
 - Setelah kita membuat class, jika kita ingin membuat object dari class tersebut, kita bisa menggunakan kata kunci `new`, lalu diikuti dengan nama constructor function tersebut.
 
-
 ### Kode : Membuat Object
 
 ```javascript
@@ -85,7 +84,6 @@ const yusril = new Person();
 - Sebenarnya setelah kita membuat object, kita bisa dengan mudah menambahkan property ke dalam object tersebut hanya dengan menggunakan nama variable nya, diikuti tanda titik dan nama property.
 - Namun jika seperti itu, alhasil, constructor function yang sudah kita buat tidak terlalu berguna, karena property nya hanya ada di object yang kita tambahkan property.
 - Untuk menambahkan property didalam semua object yang dibuat dari constructor function, kita bisa menggunakan kata kunci `this` lalu diikuti dengan nama property nya.
-
 
 ### Kode : Property di Constructor Function
 
@@ -256,6 +254,7 @@ Employee.prototype.sayHello = function (name) {
   console.info(`Hello ${name}, my name is Employee ${this.name}`);
 }
 ```
+
 ### Diagram : Prototype Inheritance Salah
 
 ![Diagram Prototype Inheritance Salah](img/DiagramProtorypeInheritanceSalah.png)
@@ -289,7 +288,6 @@ Employee.prototype.sayHello = function (name) {
 ### Diagram Prototype Inheritance Benar
 
 ![Diagram Prototype Inheritance Benar](img/DiagramPrototypeInheritanceBenar.png)
-
 
 ## Keyword Class
 
@@ -327,7 +325,7 @@ class Person{
 const eko = new Person("Eko");
 console.info(eko);
 ```
- 
+
 ## Property di Class
 
 - Sama seperti pada constructor function, dalam class pun kita bisa menambahkan property.
@@ -360,7 +358,7 @@ class Person {
   constructor (name) {
     this.name = name;
   }
-  
+
   sayHello (name) {
     console.info(`Hello ${name}, my name is ${this.name}`);
   }
@@ -465,7 +463,7 @@ class Circle extends Shape {
 ## Getter dan Setter di Class
 
 - Class juga mendukung pembuatan getter dan setter.
-- Perlu diingat, getter dan setter in akan berada di prototype, buka di instance object.
+- Perlu diingat, getter dan setter in akan berada di prototype, bukan di instance object.
 
 ### kode : Getter dan Setter
 
@@ -487,9 +485,10 @@ class Person {
   }
 }
 ```
+
 ### Console : Getter dan Setter
 
-![Console Getter dan Setter](img/GetterDanSetter.png)
+<img src="img/GetterDanSetter.png" title="" alt="Console Getter dan Setter" width="480">
 
 ## Public Class Field
 
@@ -515,11 +514,11 @@ class Customer {
 }
  const eko = new Customer();
  console.info(eko);
- ```
+```
 
 ### Console : Public Class Field
 
-![Console Public Class Field](img/PublicClassField.png)
+<img src="img/PublicClassField.png" title="" alt="Console Public Class Field" width="458">
 
 ### Kode : Public Class Field dan Constructor
 
@@ -541,7 +540,7 @@ console.info(eko);
 
 ### Console : Public Class Field dan Constructor
 
-![Console Public Class Field Constructor](img/PublicClassFieldConstructor.png)
+<img src="img/PublicClassFieldConstructor.png" title="" alt="Console Public Class Field Constructor" width="409">
 
 ## Private Class Field
 
@@ -585,7 +584,7 @@ console.info(counter.get());
 
 - Sama Seperti field, terdapat proposal juga untuk menambah fitur private method di EcmaScript.
 - Dengan demikian, access modifier private juga bisa digunakan di method.
-- Caranya sama dengan tanda `#` diawak method, maka secara otomatis method tersebut adalah private.
+- Caranya sama dengan tanda `#` diawal method, maka secara otomatis method tersebut adalah private.
 - Ingat fitur ini masih dalam tahapan, belum benar-benar menjadi standard EcmaScript, jadi mungkin tidak semua browser menduking fitur ini.
 - ![Private Method](https://github.com/tc39/proposal-private-methods)
 
@@ -638,7 +637,6 @@ console.info(budi instanceof Employee); // true
 console.info(budi instanceof Manager); // false
 console.info(budi instanceof Employee); // false
 console.info(budi instanceof Manager); // true
-
 ```
 
 ### Operator instanceof di Class inheritance
@@ -682,11 +680,11 @@ console.info(eko instanceof Manager); // true
 
 ```javascript
 class Configuration {
-  
+
   static name = "Belajar JavaScript Dasar";
   static version = 1.0;
   static author = "Eko Kurniawan";
-  
+
 }
 ```
 
@@ -737,15 +735,13 @@ console.info(sum);
 - Untuk melempar error, kita bisa gunakan kata kunci `throw`, diikuti dengan instance object error nya.
 - Jika terjadi error, maka otomatis kode program kita akan terhenti, dan kita bisa melihat detail errornya di console browser kita.
 
- 
 ### Kode : Throw Error
-
 
 ```javascript
 class MathUtil {
 
   static sun(...numbers) {
-    if (numbers.length == 0) {
+    if (numbers.length === 0) {
       throw new Error("Total parameter harus lebih dari 0");
     }
 
@@ -769,7 +765,6 @@ console.info(sum);
 - Kita bisa menggunakan `try catch` statement untuk menangkap error.
 - Pada block `try`, kita akan mencoba mengakses kode program yang bisa menyebabkan error, dan jika terjadi error, block `try` akan berhenti dan otomatis masuk ke block `catch`.
 - Jika tidak terjadi error, block catch tidak akan dieksekusi.
-
 
 ### Kode : Error Handling
 
@@ -823,7 +818,7 @@ class Counter {
   }
 }
 
-const counter = nrw Counter();
+const counter = new Counter();
 console.info(counter.next());
 console.info(counter.next()); 
 console.info(counter.next());
@@ -915,7 +910,6 @@ type IteratorResult<T, TReturn = any> = IteratorYeildResult<T> | IteratorReturnR
 - Setiap kuta melakukan perulangan, object iterator akan dibuat.
 - Hal ini menjadi aman jika kita melakukan iterasi berulang ulang, katena iterator baru akan dibuat terus menerus.
 
-
 ### Kode : Membuat Counter Iterator Result
 
 ```javascript
@@ -981,4 +975,3 @@ for (const element of counter){
 - JavaScript Document Object Model
 - JavaScript Asunc
 - JavaScript Web API
-
