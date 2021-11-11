@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Iterable dan Iterator</title>
+  </head>
+
+  <body> 
+    <script>
+
+      class CounterIteratorResult {
+        constructor(value, done) {
+          this.value = value;
+          this.done = done;
+        }
+      }
+
+      class CounterIterator {
+        coconstructor(value, max) {
+          this.value = value;
+          this.max = max;
+        }
+
+        next() {
+          try {
+            if (this.value > this.max) {
+              return new CounterIteratorResult(this.value, true);
+            } else {
+              return new CounterIteratorResult(this.value, false);
+            }
+          } finally {
+            this.value++;
+          }
+        }
+      }
+      
+      class Counter {
+        constructor(value, max) {
+          this.value = value;
+          this.max = max;
+        }
+        
+        [Symbol.iterator]() {
+          return new CounterIterator(this.value, this.max);
+        }
+      }
+
+      const counter = new Counter();
+      for (const element of counter) {
+        console.info(element);
+      }
+
+    </script>
+  </body>
+</html>
