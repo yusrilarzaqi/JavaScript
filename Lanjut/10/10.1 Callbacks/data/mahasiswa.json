@@ -1,0 +1,23 @@
+[
+  {
+    "nama" : "Yusril Arzaqi",
+    "nrp"  : "1203131",
+    "email": "arzaqiyusril@gmail.com",
+    "jurusan": "Tehnik Komputer",
+    "idDosenWali":1
+  },
+  {
+    "nama" : "Bimo Alamsyah",
+    "nrp"  : "1203132",
+    "email": "Bimoalam@gmail.com",
+    "jurusan": "Tehnik Informatika",
+    "idDosenWali":2
+  },
+  {
+    "nama" : "Dimas Rafif",
+    "nrp"  : "1203133",
+    "email": "DimsRaf@gmail.com",
+    "jurusan": "Tehnik Pemesinan",
+    "idDosenWali":2
+  }
+]
