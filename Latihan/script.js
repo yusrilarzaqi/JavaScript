@@ -1,8 +1,6 @@
-let today = new Date();
-let s = today.getSeconds();
-let m = today.getMinutes();
-let h = today.getHours();
+const button = document.querySelector('.button');
+button.addEventListener('click', () => {
+  const input = document.querySelector('.input').value;
+  document.querySelector('.test').innerHTML = input;
+})
 
-while(true) {
-  console.log(`${h}:${m}:${s}`);
-}
