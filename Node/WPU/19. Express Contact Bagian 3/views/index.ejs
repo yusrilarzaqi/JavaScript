@@ -1,0 +1,15 @@
+<div class="contanier mt-4">
+  <h1>Welcome To my Web Site</h2>
+
+  <h2>Daftar Contact</h3>
+  <% if (mahasiswa.length < 0) { %>
+   <p>Data Mahasiswa masih kosong</p>
+  <% }  else {%>
+    <% mahasiswa.forEach(mhs => { %>
+      <ul>
+        <li>Nama  : <%= mhs.nama %> </li>
+        <li>Email : <%= mhs.email %> </li>
+      </ul>
+    <% }) %>
+  <% } %> 
+</div>

@@ -1,3 +1,4 @@
+const { constants } = require('buffer');
 const fs = require('fs');
 // const validator = require('validator');
 // const chalk = require('chalk');
@@ -16,8 +17,7 @@ if(!fs.existsSync(dataPath)) {
 
 const loadContact = () => {
   const file= fs.readFileSync('data/contacts.json', 'utf-8');
-  const contacts = JSON.parse(file);
-  return contacts;
+  return JSON.parse(file);
 };
 
 const findContact = (nama) => {
@@ -25,7 +25,39 @@ const findContact = (nama) => {
   return contacts.find((contact) => contact.nama.toLowerCase() === nama.toLowerCase());
 };
 
-module.exports = {loadContact, findContact};
+const saveContacts = contacts => {
+  fs.writeFileSync('data/contacts.json', JSON.stringify(contacts));
+};
+
+const addContact = contact => {
+  const contacts = loadContact();
+  contacts.push(contact);
+  saveContacts(contacts);
+};
+
+const cekDuplikat = nama => {
+  const contacts = loadContact();
+  return contacts.find(contact => contact.nama === nama);
+};
+
+const deleteContact = nama => {
+  const contacts = loadContact();
+  const newContacts = contacts.filter(contact => contact.nama.toLowerCase() !== nama.toLowerCase());
+  saveContacts(newContacts);
+};
+
+const updateContacts = contactBaru => {
+  const contacts = loadContact();
+
+  // hilangkan contact lama yang namanya sama dengan oldNama
+  const filteredContacts = contacts.filter(contact => contact.nama !== contactBaru.oldNama);
+  delete contactBaru.oldNama;
+  filteredContacts.push(contactBaru);
+  saveContacts(filteredContacts);
+};
+
+
+module.exports = {loadContact, findContact, addContact, cekDuplikat, deleteContact, updateContacts};
 
 
 // const simpanContact = (nama, email, noHp) =>  {
@@ -103,7 +135,7 @@ module.exports = {loadContact, findContact};
 
 //   if(contacts.length === newContact.length) {
 //     console.log(chalk.red.inverse.bold(`Nama ${nama} Tidak Ditemukan !`));
-//     return false
+//     return false;
 //   }
 
 //   fs.writeFileSync('data/contacts.json', JSON.stringify(newContact));
