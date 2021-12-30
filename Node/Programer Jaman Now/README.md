@@ -213,10 +213,126 @@ node
 ## Modules
 
 - Standard Library yang terdapat di NodeJS bisa kita gunakan 
-- Jika belum 
+- Jika belum mengerti tentang JavaScript Modules, silahkan pelajari kelas saya tentang JavaScript Modules.
+- Karena NodeJS menggunakan Modules, jika kita ingin menggunakan Modules, kita juga perlu memberi tahu bahwa file JavaScript kita menggunakan Modules, caranya dengan mengubah nama file dari .js menjadi .mjs
 
+## Require Function
 
+- Awalnya ketika NodeJS rilis, fitur JavaScript Modules belum rilis, namun sekarang JavaScript sudah banyak menggunakan JavaScript Moudles.
+- NodeJS pun awalnya tidak menggunakan JavaScript modules, namun sekarang NodeJS sudah bisa menggunakan JavaScript Moudles, dan sangat direkomendasikan menggunakannya.
+- Namun awal sebelum modules, NodeJS menggunakan function require() untuk melakukan import file
+- Di materi ini saya sengaja bahas, agar tidak bungung ketika kita melihat tutorial yang masih menggunakan function require.
 
+```javascript
+const os = require("os")
+
+console.info(os.platform())
+console.table(os.cpus())
+```
+
+## Global Async di Module
+
+- Saat kita belajar JavaScript, untuk menggunakan Async Await, biasanya kita perlu membuat terlebih dahulu function yang kita tandai sebagai async.
+- Saat kita menggunakan Module, secara default, global code adalah Async, oleh karena itu kita bisa menggunakan Async Await.
+- Kecuali jika kita membuat function, maka function tersebut harus kita tandai sebagai Async jika ingin menggunakan Async Await.
+
+### Kode: JavaScript
+
+```javascript
+function samplePromise() {
+  return Promise.resolve("Yusril")
+}
+
+const data = await samplePromise();
+console.info(data);
+```
+
+## OS
+
+- OS merupakan standard library yang bisa digunakan untuk mendapatkan informasi tentang sistem operasi yang digunakan.
+- ![Dokumentasi Standard Library OS](https://nodejs.org/dist/latest-v16.x/docs/api/os.html)
+
+### Kode: OS
+
+```javascript
+import os from "os"
+
+console.info(os.platform())
+console.info(os.arch())
+console.table(os.cpus())
+console.info(os.uptime())
+console.info(os.totalmem())
+console.info(os.freemem())
+console.table(os.networkInterfaces())
+```
+
+## Path
+
+- Path merupakan standard library yang bisa kita gunakan untuk bekerja dengan lokasi file dan directory / folder
+- ![Dokumentasi Standard Library Path](https://nodejs.org/dist/latest-v16.x/docs/api/path.html)
+
+### Kode: Path
+
+```javascript
+import path from 'path'
+
+const file = '/home/yusril/Documents/JavaScript/Node/Programer Jaman Now/src/path.mjs'
+
+console.info(path.sep)
+console.info(path.dirname(file))
+console.info(path.basename(file))
+console.info(path.extname(file))
+console.info(path.parse(file))
+console.info(path.normalize(file))
+```
+
+## File System
+
+- File System merupakan standard library yang bisa digunakan untuk memanipulasi file system
+- Dalam File System terdapat 3 jenis library.
+- Pertama library yang bersifat blocking atau synchronous.
+- Kedua library yang bersifat non-blocking atau asynchronous menggunakan callback
+- ketiga library yang bersifat non-blocking atau asynchronous tapi menggunakan promise
+- ![Dokumentasi Standard Library Path](https://nodejs.org/dist/latest-v16.x/docs/api/fs.html)
+
+### Kode: File System
+
+```javascript
+import fs from 'fs'
+
+const buffer = fs.readFileSync('file-system.mjs')
+
+console.info(buffer.toString())
+
+fs.writeFileSync('tmp.txt', 'Hello World')
+```
+
+## Debugger
+
+- NodeJS memiliki fitur debugger, dimana kita bisa mengikuti tahapan eksekusi program NodeJS.
+- Hal ini sangat cocok ketika melakukan proses debugging, mencari sebab masalah yang terjadi di aplikasi kita.
+- ![Dokumentasi Standard Library Path](https://nodejs.org/dist/latest-v16.x/docs/api/debugger.html)
+
+### Breakpoint
+
+- Dalam debugging terdapat istilah breakpoint, yaitu lokasi dimana kita ingin menghentikan sementara eksekusi kode program.
+- Biasanya ini dilakukan untuk mengawasi data-data disekitar lokasi berhentinya tersebut.
+- Untuk menambahkan breakpoint, kita bisa menggunakan kata kunci: `debugger;`
+
+### Menjalankan Model Debug
+
+- Jika kita menjalankan file JavaScript hanya dengan menggunakan perintah node namafile.js, maka secara default dia tidak akan jalan dalam mode debug.
+- Agar jalan dalam mode debug, kita harus menambahkan perintah **inspect**: `node inspect namaFile.js`
+
+### Perintah Debug
+
+Saat masuk ke mode debug, ada beberapa perintah yang bisa kita gunakan dalam melakukan debugging
+
+- `cont, c`: Continue execution
+- `next, n`: Step next
+- `step, s`: Step in
+- `out, o` : Step out
+- `pause`  : Pause running code
 
 
 
