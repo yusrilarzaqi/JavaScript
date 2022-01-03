@@ -1,0 +1,481 @@
+
+{
+  "header": {
+    "reportVersion": 2,
+    "event": "Ups",
+    "trigger": "Exception",
+    "filename": "report.json",
+    "dumpEventTime": "2022-01-01T17:10:00Z",
+    "dumpEventTimeStamp": "1641031800865",
+    "processId": 2861322,
+    "threadId": 0,
+    "cwd": "/home/yusril/Documents/JavaScript/Node/Programer Jaman Now/src",
+    "commandLine": [
+      "/snap/node/5645/bin/node",
+      "report.mjs"
+    ],
+    "nodejsVersion": "v16.13.1",
+    "glibcVersionRuntime": "2.31",
+    "glibcVersionCompiler": "2.31",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "linux",
+    "componentVersions": {
+      "node": "16.13.1",
+      "v8": "9.4.146.24-node.14",
+      "uv": "1.42.0",
+      "zlib": "1.2.11",
+      "brotli": "1.0.9",
+      "ares": "1.18.1",
+      "modules": "93",
+      "nghttp2": "1.45.1",
+      "napi": "8",
+      "llhttp": "6.0.4",
+      "openssl": "1.1.1l+quic",
+      "cldr": "39.0",
+      "icu": "69.1",
+      "tz": "2021a",
+      "unicode": "13.0",
+      "ngtcp2": "0.1.0-DEV",
+      "nghttp3": "0.1.0-DEV"
+    },
+    "release": {
+      "name": "node",
+      "lts": "Gallium",
+      "headersUrl": "https://nodejs.org/download/release/v16.13.1/node-v16.13.1-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v16.13.1/node-v16.13.1.tar.gz"
+    },
+    "osName": "Linux",
+    "osRelease": "5.11.0-41-generic",
+    "osVersion": "#45~20.04.1-Ubuntu SMP Wed Nov 10 10:20:10 UTC 2021",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Core(TM) i5-6300U CPU @ 2.40GHz",
+        "speed": 2500,
+        "user": 1372160,
+        "nice": 7760,
+        "sys": 376110,
+        "idle": 11581170,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-6300U CPU @ 2.40GHz",
+        "speed": 2500,
+        "user": 1033670,
+        "nice": 4660,
+        "sys": 363410,
+        "idle": 604050,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-6300U CPU @ 2.40GHz",
+        "speed": 1595,
+        "user": 1217060,
+        "nice": 3540,
+        "sys": 372250,
+        "idle": 569440,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-6300U CPU @ 2.40GHz",
+        "speed": 1389,
+        "user": 1382140,
+        "nice": 4760,
+        "sys": 371940,
+        "idle": 563950,
+        "irq": 0
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "lo",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "127.0.0.1",
+        "netmask": "255.0.0.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "lo",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "::1",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      }
+    ],
+    "host": "KdeNeon"
+  },
+  "javascriptStack": {
+    "message": "Error: Ups",
+    "stack": [
+      "at simpleError (file:///home/yusril/Documents/JavaScript/Node/Programer%20Jaman%20Now/src/report.mjs:9:9)",
+      "at file:///home/yusril/Documents/JavaScript/Node/Programer%20Jaman%20Now/src/report.mjs:12:1",
+      "at ModuleJob.run (node:internal/modules/esm/module_job:185:25)",
+      "at async Promise.all (index 0)",
+      "at async ESMLoader.import (node:internal/modules/esm/loader:281:24)",
+      "at async loadESM (node:internal/process/esm_loader:88:5)"
+    ],
+    "errorProperties": {
+    }
+  },
+  "javascriptHeap": {
+    "totalMemory": 4833280,
+    "totalCommittedMemory": 3894864,
+    "usedMemory": 4150872,
+    "availableMemory": 2194571248,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 176128,
+        "committedMemory": 176128,
+        "capacity": 170944,
+        "used": 170944,
+        "available": 0
+      },
+      "old_space": {
+        "memorySize": 2969600,
+        "committedMemory": 2855520,
+        "capacity": 2916048,
+        "used": 2915928,
+        "available": 120
+      },
+      "code_space": {
+        "memorySize": 368640,
+        "committedMemory": 133024,
+        "capacity": 333056,
+        "used": 333056,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 270336,
+        "committedMemory": 239656,
+        "capacity": 257912,
+        "used": 257912,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 0,
+        "used": 0,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 0,
+        "used": 0,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 1031072,
+        "used": 0,
+        "available": 1031072
+      },
+      "new_space": {
+        "memorySize": 1048576,
+        "committedMemory": 490536,
+        "capacity": 1031072,
+        "used": 473032,
+        "available": 558040
+      }
+    }
+  },
+  "nativeStack": [
+    {
+      "pc": "0x000055c7d134d8a6",
+      "symbol": "report::TriggerNodeReport(v8::Isolate*, node::Environment*, char const*, char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, v8::Local<v8::Value>) [/snap/node/5645/bin/node]"
+    },
+    {
+      "pc": "0x000055c7d134feeb",
+      "symbol": "report::WriteReport(v8::FunctionCallbackInfo<v8::Value> const&) [/snap/node/5645/bin/node]"
+    },
+    {
+      "pc": "0x000055c7d1533e8e",
+      "symbol": " [/snap/node/5645/bin/node]"
+    },
+    {
+      "pc": "0x000055c7d1535343",
+      "symbol": "v8::internal::Builtin_HandleApiCall(int, unsigned long*, v8::internal::Isolate*) [/snap/node/5645/bin/node]"
+    },
+    {
+      "pc": "0x000055c7d1e47bb9",
+      "symbol": " [/snap/node/5645/bin/node]"
+    }
+  ],
+  "resourceUsage": {
+    "userCpuSeconds": 0.059989,
+    "kernelCpuSeconds": 0.081414,
+    "cpuConsumptionPercent": 14.1403,
+    "maxRss": 35618816,
+    "pageFaults": {
+      "IORequired": 11,
+      "IONotRequired": 8146
+    },
+    "fsActivity": {
+      "reads": 704,
+      "writes": 0
+    }
+  },
+  "uvthreadResourceUsage": {
+    "userCpuSeconds": 0.040959,
+    "kernelCpuSeconds": 0.057343,
+    "cpuConsumptionPercent": 9.8302,
+    "fsActivity": {
+      "reads": 704,
+      "writes": 0
+    }
+  },
+  "libuv": [
+    {
+      "type": "async",
+      "is_active": true,
+      "is_referenced": false,
+      "address": "0x000055c7d6683d40"
+    },
+    {
+      "type": "async",
+      "is_active": true,
+      "is_referenced": false,
+      "address": "0x000055c7d4e622a0"
+    },
+    {
+      "type": "timer",
+      "is_active": false,
+      "is_referenced": false,
+      "address": "0x000055c7d67476c8",
+      "repeat": 0,
+      "firesInMsFromNow": -13520124,
+      "expired": true
+    },
+    {
+      "type": "check",
+      "is_active": true,
+      "is_referenced": false,
+      "address": "0x000055c7d6747760"
+    },
+    {
+      "type": "idle",
+      "is_active": false,
+      "is_referenced": true,
+      "address": "0x000055c7d67477d8"
+    },
+    {
+      "type": "prepare",
+      "is_active": true,
+      "is_referenced": false,
+      "address": "0x000055c7d6747850"
+    },
+    {
+      "type": "check",
+      "is_active": true,
+      "is_referenced": false,
+      "address": "0x000055c7d67478c8"
+    },
+    {
+      "type": "async",
+      "is_active": true,
+      "is_referenced": false,
+      "address": "0x000055c7d6747940"
+    },
+    {
+      "type": "tty",
+      "is_active": false,
+      "is_referenced": true,
+      "address": "0x000055c7d66558a0",
+      "width": 84,
+      "height": 42,
+      "fd": 17,
+      "writeQueueSize": 0,
+      "readable": true,
+      "writable": true
+    },
+    {
+      "type": "signal",
+      "is_active": true,
+      "is_referenced": false,
+      "address": "0x000055c7d6757608",
+      "signum": 28,
+      "signal": "SIGWINCH"
+    },
+    {
+      "type": "tty",
+      "is_active": false,
+      "is_referenced": true,
+      "address": "0x000055c7d66b9cc0",
+      "width": 84,
+      "height": 42,
+      "fd": 19,
+      "writeQueueSize": 0,
+      "readable": true,
+      "writable": true
+    },
+    {
+      "type": "tty",
+      "is_active": false,
+      "is_referenced": true,
+      "address": "0x000055c7d66b9ea0",
+      "width": 84,
+      "height": 42,
+      "fd": 20,
+      "writeQueueSize": 0,
+      "readable": true,
+      "writable": true
+    },
+    {
+      "type": "signal",
+      "is_active": true,
+      "is_referenced": false,
+      "address": "0x000055c7d66ba0c8",
+      "signum": 12,
+      "signal": "SIGUSR2"
+    },
+    {
+      "type": "loop",
+      "is_active": false,
+      "address": "0x000055c7d4e6ddc0",
+      "loopIdleTimeSeconds": 7.3802e-05
+    }
+  ],
+  "workers": [
+  ],
+  "environmentVariables": {
+    "COLORTERM": "truecolor",
+    "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/1000/bus",
+    "DESKTOP_SESSION": "plasma-i3",
+    "DESKTOP_STARTUP_ID": "i3/kitty/2428319-1-KdeNeon_TIME8344296",
+    "DISPLAY": ":0",
+    "GPG_AGENT_INFO": "/run/user/1000/gnupg/S.gpg-agent:0:1",
+    "GTK2_RC_FILES": "/etc/gtk-2.0/gtkrc:/home/yusril/.gtkrc-2.0:/home/yusril/.config/gtkrc-2.0",
+    "GTK_RC_FILES": "/etc/gtk/gtkrc:/home/yusril/.gtkrc:/home/yusril/.config/gtkrc",
+    "HOME": "/home/yusril",
+    "I3SOCK": "/run/user/1000/i3/ipc-socket.2428319",
+    "IM_CONFIG_PHASE": "1",
+    "KDEWM": "/usr/bin/i3",
+    "KDE_APPLICATIONS_AS_SCOPE": "1",
+    "KDE_FULL_SESSION": "true",
+    "KDE_SESSION_UID": "1000",
+    "KDE_SESSION_VERSION": "5",
+    "KITTY_PID": "2428694",
+    "KITTY_WINDOW_ID": "1",
+    "LANG": "en_US.UTF-8",
+    "LC_ADDRESS": "id_ID.UTF-8",
+    "LC_IDENTIFICATION": "id_ID.UTF-8",
+    "LC_MEASUREMENT": "id_ID.UTF-8",
+    "LC_MONETARY": "id_ID.UTF-8",
+    "LC_NAME": "id_ID.UTF-8",
+    "LC_NUMERIC": "id_ID.UTF-8",
+    "LC_PAPER": "id_ID.UTF-8",
+    "LC_TELEPHONE": "id_ID.UTF-8",
+    "LC_TIME": "id_ID.UTF-8",
+    "LOGNAME": "yusril",
+    "MOZ_USE_XINPUT2": "1",
+    "PAM_KWALLET5_LOGIN": "/run/user/1000/kwallet5.socket",
+    "PATH": "/home/yusril/bin:/home/yusril/.local/bin:/home/yusril/.yarn/bin:/home/yusril/.local/kitty.app/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin",
+    "PWD": "/home/yusril/Documents/JavaScript/Node/Programer Jaman Now/src",
+    "QT_ACCESSIBILITY": "1",
+    "QT_AUTO_SCREEN_SCALE_FACTOR": "0",
+    "QT_EXCLUDE_GENERIC_BEARER": "1",
+    "SHELL": "/usr/bin/fish",
+    "SHLVL": "2",
+    "SNAP": "/snap/node/5645",
+    "SNAP_ARCH": "amd64",
+    "SNAP_COMMON": "/var/snap/node/common",
+    "SNAP_CONTEXT": "17gO4ljnu5Pgf4hALlp482kLMspyhEorIoye1a3CNpEIRWNE17AC",
+    "SNAP_COOKIE": "17gO4ljnu5Pgf4hALlp482kLMspyhEorIoye1a3CNpEIRWNE17AC",
+    "SNAP_DATA": "/var/snap/node/5645",
+    "SNAP_INSTANCE_KEY": "",
+    "SNAP_INSTANCE_NAME": "node",
+    "SNAP_LIBRARY_PATH": "/var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void",
+    "SNAP_NAME": "node",
+    "SNAP_REAL_HOME": "/home/yusril",
+    "SNAP_REEXEC": "",
+    "SNAP_REVISION": "5645",
+    "SNAP_USER_COMMON": "/home/yusril/snap/node/common",
+    "SNAP_USER_DATA": "/home/yusril/snap/node/5645",
+    "SNAP_VERSION": "16.13.1",
+    "SSH_AGENT_PID": "2428273",
+    "SSH_AUTH_SOCK": "/tmp/ssh-qdXyH7RyuEqK/agent.2421571",
+    "STARSHIP_SESSION_KEY": "4592014452659568",
+    "STARSHIP_SHELL": "fish",
+    "TERM": "xterm-256color",
+    "TERMINFO": "/home/yusril/.local/kitty.app/lib/kitty/terminfo",
+    "TMUX": "/tmp/tmux-1000/default,2446686,1",
+    "TMUX_PANE": "%2",
+    "TMUX_PLUGIN_MANAGER_PATH": "/home/yusril/.tmux/plugins/",
+    "USER": "yusril",
+    "WINDOWID": "27262990",
+    "XAUTHORITY": "/home/yusril/.Xauthority",
+    "XCURSOR_SIZE": "24",
+    "XCURSOR_THEME": "Fluent-dark-cursors",
+    "XDG_CONFIG_DIRS": "/home/yusril/.config/kdedefaults:/etc/xdg/xdg-plasma-i3:/etc/xdg",
+    "XDG_CURRENT_DESKTOP": "KDE",
+    "XDG_DATA_DIRS": "/usr/share/plasma-i3:/home/yusril/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share",
+    "XDG_RUNTIME_DIR": "/run/user/1000",
+    "XDG_SEAT": "seat0",
+    "XDG_SEAT_PATH": "/org/freedesktop/DisplayManager/Seat0",
+    "XDG_SESSION_CLASS": "user",
+    "XDG_SESSION_DESKTOP": "KDE",
+    "XDG_SESSION_ID": "30",
+    "XDG_SESSION_PATH": "/org/freedesktop/DisplayManager/Session4",
+    "XDG_SESSION_TYPE": "x11",
+    "XDG_VTNR": "1"
+  },
+  "userLimits": {
+    "core_file_size_blocks": {
+      "soft": 0,
+      "hard": "unlimited"
+    },
+    "data_seg_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "file_size_blocks": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_locked_memory_bytes": {
+      "soft": 67108864,
+      "hard": 67108864
+    },
+    "max_memory_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "open_files": {
+      "soft": 1048576,
+      "hard": 1048576
+    },
+    "stack_size_bytes": {
+      "soft": 8388608,
+      "hard": "unlimited"
+    },
+    "cpu_time_seconds": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_user_processes": {
+      "soft": 30811,
+      "hard": 30811
+    },
+    "virtual_memory_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    }
+  },
+  "sharedObjects": [
+    "linux-vdso.so.1",
+    "/snap/core20/current/lib/x86_64-linux-gnu/libdl.so.2",
+    "/snap/core20/current/lib/x86_64-linux-gnu/libstdc++.so.6",
+    "/snap/core20/current/lib/x86_64-linux-gnu/libm.so.6",
+    "/snap/core20/current/lib/x86_64-linux-gnu/libgcc_s.so.1",
+    "/snap/core20/current/lib/x86_64-linux-gnu/libpthread.so.0",
+    "/snap/core20/current/lib/x86_64-linux-gnu/libc.so.6",
+    "/snap/core20/current/lib64/ld-linux-x86-64.so.2"
+  ]
+}

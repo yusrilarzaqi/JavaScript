@@ -14,7 +14,7 @@
 - NodeJS merupakan teknologi yang bisa digunakan untuk menjalankan kode Javascript diluar Web Browser
 - NodeJS dibuat dari V8 Engine, yaitu Engine untuk Google Chrome.
 - NodeJS merupakan project yang Free dan OpenSource
-- ![NodeJS](https://nodejs.org)
+- [NodeJS](https://nodejs.org)
 
 ## Kenapa Belajar NodeJS ?
 
@@ -66,7 +66,6 @@
 - Data disimpan dan diambil oleh Server
 - Client tidak bisa langsung mengambil atau menyimpan data ke Database secara langsung, oleh karena itu perlu penengah untuk melakukan, yaitu Server
 - Database biasanya menggunakan aplikasi sistem basis data sepertinya MySQL, PostgreSQL, MongoDB, dan lain-lain
-
 
 ## Concurrency dan Parallel
 
@@ -168,12 +167,12 @@
 - NodeJS Menggunakan C++ Threadpool untuk workernya, yaitu threadpool untuk melakukan pekerjaan.
 - Libuv adalah library yang digunakan di NodeJS, dimana secara default libuv menggunakan 4 thread di dalam threadpool nya, hal ini menjadikan kita bisa melakukan 4 pekerjaan blocking sekaligus dalam satu waktu.
 - Jika terlalu banyak pekerjaan blocking, kita bisa menghubah jumlah thread di libuv dengan perngaturan environment variable UV_THREADPOOL_SIZE
-- ![Dokumentasi Threadpool](https://docs.libuv.org/en/v1.x/threadpool.html)
+- [Dokumentasi Threadpool](https://docs.libuv.org/en/v1.x/threadpool.html)
 
 ## Menginstall NodeJS Manual
 
 - Download versi NodeJS LTS (Long Term Support)
-- ![Download NodeJS](https://nodejs.org/en/download/)
+- [Download NodeJS](https://nodejs.org/en/download/)
 
 ### Setting PATH NodeJS
 
@@ -204,11 +203,11 @@ node
 ## NodeJS Standard Library
 
 - Saat kita belajar JavaScript, di Web Browser, terdapat fitur-fitur yang bernama Web API.
-- ![Web API](https://developer.mozilla.org/en-US/docs/Web/API)
+- [Web API](https://developer.mozilla.org/en-US/docs/Web/API)
 - Kebanyakan fitur Web API hanya berjalan di Web Browser, sehingga tidak bisa jalan di NodeJS.
 - NodeJS sendiri hanya menggunakan bahas pemrograman JavaScript nya, namun tidak mengadopsi fitur Web API nya, karena itu hanya berjalan di Web Browser.
 - NodeJS sendiri memiliki standard library yang bisa kita gunakan untuk mempermudah pembuatan aplikasi.
-- ![Web API NodeJS](https://nodejs.org/dist/latest-v16.x/docs/api/)
+- [Web API NodeJS](https://nodejs.org/dist/latest-v16.x/docs/api/)
 
 ## Modules
 
@@ -250,7 +249,7 @@ console.info(data);
 ## OS
 
 - OS merupakan standard library yang bisa digunakan untuk mendapatkan informasi tentang sistem operasi yang digunakan.
-- ![Dokumentasi Standard Library OS](https://nodejs.org/dist/latest-v16.x/docs/api/os.html)
+- [Dokumentasi Standard Library OS](https://nodejs.org/dist/latest-v16.x/docs/api/os.html)
 
 ### Kode: OS
 
@@ -269,7 +268,7 @@ console.table(os.networkInterfaces())
 ## Path
 
 - Path merupakan standard library yang bisa kita gunakan untuk bekerja dengan lokasi file dan directory / folder
-- ![Dokumentasi Standard Library Path](https://nodejs.org/dist/latest-v16.x/docs/api/path.html)
+- [Dokumentasi Standard Library Path](https://nodejs.org/dist/latest-v16.x/docs/api/path.html)
 
 ### Kode: Path
 
@@ -293,7 +292,7 @@ console.info(path.normalize(file))
 - Pertama library yang bersifat blocking atau synchronous.
 - Kedua library yang bersifat non-blocking atau asynchronous menggunakan callback
 - ketiga library yang bersifat non-blocking atau asynchronous tapi menggunakan promise
-- ![Dokumentasi Standard Library Path](https://nodejs.org/dist/latest-v16.x/docs/api/fs.html)
+- [Dokumentasi Standard Library Path](https://nodejs.org/dist/latest-v16.x/docs/api/fs.html)
 
 ### Kode: File System
 
@@ -311,7 +310,7 @@ fs.writeFileSync('tmp.txt', 'Hello World')
 
 - NodeJS memiliki fitur debugger, dimana kita bisa mengikuti tahapan eksekusi program NodeJS.
 - Hal ini sangat cocok ketika melakukan proses debugging, mencari sebab masalah yang terjadi di aplikasi kita.
-- ![Dokumentasi Standard Library Path](https://nodejs.org/dist/latest-v16.x/docs/api/debugger.html)
+- [Dokumentasi Standard Library Path](https://nodejs.org/dist/latest-v16.x/docs/api/debugger.html)
 
 ### Breakpoint
 
@@ -334,36 +333,381 @@ Saat masuk ke mode debug, ada beberapa perintah yang bisa kita gunakan dalam mel
 - `out, o` : Step out
 - `pause`  : Pause running code
 
+### Kode: Debugger
+
+```javascript
+function sayHello(name) {
+  debugger
+  return `hello ${name}`
+}
+
+const firstName = "Yusril"
+
+console.info(sayHello(firstName))
+```
+
+## DNS
+
+- DNS merupakan standard library yang bisa digunakan untuk bekerja dengan DMS (domain name server)
+- [Standard Library DNS](https://nodejs.org/dist/latest-v16.x/docs/api/dns.html)
+
+### Kode: DNS
+
+```javascript
+import dns from 'dns'
+
+function callback(err, ip) {
+  console.info(ip)
+}
+
+dns.lookup("www.google.com", callback)
+```
+
+## Events
+
+- Events adalah standard library di NodeJS yang bisa digunakan sebagai implementasi Event Listener.
+- Di dalam Events, terdapat sebuah class bernama EventEmitter yang bisa digunakan untuk menampung data listener per jenis event.
+- Lalu kita bisa melakukan emmit untuk mentrigger jenis event dan mengirim data ke event tersebut.
+- [Standard Library Events](https://nodejs.org/dist/latest-v16.x/docs/api/events.html)
+
+### Kode: Events
+
+```javascript
+import {EventEmitter} from 'events'
+
+const emitter = new EventEmitter
 
 
+emitter.addListener("hello", name => {
+  console.info(`Hello ${name}`)
+})
+
+emitter.addListener("hello", name => {
+  console.info(`Hello ${name}`)
+})
+
+emitter.emit("hello", "Yusril")
+```
+
+## Globals
+
+- Di dalamam NodeJS, terdapat library berupa variable atau function yang secara global bisa diakses dimana saja, tanpa harus melakukan import.
+- Kita bisa melihat detail apa saja fitur yang terdapat secara global di halaman dokumentasinya. 
+- [Standard Library Globals](https://nodejs.org/dist/latest-v16.x/docs/api/globals.html)
+
+## Kode: Globals
+
+```javascript
+setTimeout(() => {
+  console.info("Hello World")
+}, 3000)
+```
+
+## Process
+
+- Process merupakan standard library yang digunakan untuk mendapatkan informasi process NodeJS yang sedang berjalan.
+- Process juga merupakan instance dari EventEmitter, sehingga kita bisa menambahkan listener kedalam Process.
+- [Standard Library Globals](https://nodejs.org/dist/latest-v16.x/docs/api/process.html)
+
+### Kode: Process
+
+```javascript
+import process from "process"
+
+process.addListener("exit", exitCode => {
+  console.info(`NodeJS exit with code ${exitCode}`)
+})
+
+console.info(process.version)
+console.table(process.argv)
+console.table(process.report)
+console.table(process.env)
+
+process.exit(1)
+
+console.info(
+  "Not Printed because already exit"
+)
+```
+
+## Readline
+
+- Readline merupakan standard library yang digunakan untuk membaca input.
+- Namun pada saat dibuat video ini, Readline hanya mendukung versi callback di versi NodeJS LTS 16
+- Di NodeJS 17 sudah mendukung Process sehingga lebih mudah digunakan, namun itupun bash tahap experimental
+- [Standard Library Readline](https://nodejs.org/dist/latest-v16.x/docs/api/readline.html)
+
+### Kode: Readline
+
+```javascript
+import process from 'process'
+import readline from 'readline'
+
+const input = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+})
+
+input.question("Siapa Nama Anda ? ", nama => {
+  console.info(`Hello ${nama}`)
+  input.close()
+})
+```
+
+## Report
+
+- Report merupakan fitur yang terdapat di NodeJS untuk membuat laporan secara otomatis dalam file ketika sesuatu terjadi pada aplikasi NodeJS kita.
+- [Standard Library Report](https://nodejs.org/dist/latest-v16.x/docs/api/report.html)
+
+### Kode: Report
+
+import process from 'process'
+
+```javascript
+process.report.reportOnFatalError = true;
+process.report.reportOnUncaughtException = true;
+process.report.reportOnSignal = true;
+process.report.filename = 'report.json';
+
+function simpleError() {
+  throw new Error("Ups");
+}
+
+simpleError()
+```
+
+## Buffer
+
+- Buffer merupakan object yang berisikan urutan byte dengan panjang tetap.
+- Buffer merupakan turunan dari tipe data Uint8Array
+- [Standard Library Buffer](https://nodejs.org/dist/latest-v16.x/docs/api/buffer.html)
+
+### Kode: Buffer
+
+```javascript
+const buffer = Buffer.from("Yusril");
+console.info(buffer.toString());
+
+buffer.reverse();
+console.info(buffer.toString)
+```
+
+### Buffer Encoding
+
+- Buffer juga bisa digunakan untuk melakukan encoding dari satu encoding ke encoding yang lain.
+- Ada banyak encoding yang didukung oleh Buffer, misal utf-8, ascii, hex, base 64, base64url, dan lain-lain
+
+### Kode: Buffer Encoding
+
+```javascript
+const buffer = Buffer.from('Yusril Arzaqi', 'utf8');
+
+console.info(buffer.toString("base64"))
+console.info(buffer.toString("hex"))
+
+const buffer2 = Buffer.from()
+```
+
+## Stream
+
+- Stream adalah standard library untuk kontrak aliran data di NodeJS.
+- Ada banyak sekali Stream object di NodeJS
+- Stream bisa jadi object yang bisa dibaca, atau bisa ditulis, dan Stream adalah turunan dari Eventemitter.
+- [Standard Library Stream](https://nodejs.org/dist/latest-v16.x/docs/api/stream.html)
+
+### Kode: Stream
+
+```javascript
+import fs, {read} from 'fs'
+
+const filePath = './target.log'
+
+const writer = fs.createWriteStream(filePath)
+writer.write("Yusril\n")
+writer.write("Arzaqi\n")
+writer.close()
 
 
+const reader = fs.createReadStream(filePath)
+reader.on('data', (data) => {
+  console.log(data.toString())
+  reader.close()
+})
+```
+
+## Timer
+
+- Timer merupakan standard library untuk melakukan scheduling.
+- Function di Timer terdapat di globals, sehingga kita bisa menggunakannnya tanpa melakukan import, namun semua function Timer menggunakan Callback.
+- Jika kita ingin menggunakan Timer versi Promise, kita bisa meng-import dari module `timer/promise`
+- [Standard Library Timer](https://nodejs.org/dist/latest-v16.x/docs/api/timers.html)
+
+### Kode: Timer
+
+```javascript
+setInterval(() => {
+  console.info(new Date());
+}, 1000)
+```
+
+### Kode: Timer-promises
+
+```javascript
+import timers from 'timers/promises/'
+
+for await (const startTime of timers.setInterval(1000, new Date())) {
+  console.info(`Start Timer at ${startTime}`)
+}
+```
+
+## NET
+
+- Net merupakan standard library yang bisa digunakan untuk membuat network client dan server berbasis TCP.
+- Net Server dan Client merupakan object Stream, sehingga kita bisa baca datanya, tulis datanya dan juga menambahkan listener.
+- [Standard Library Net](https://nodejs.org/dist/latest-v16.x/docs/api/net.html)
+
+### Kode: Net Server
+
+```javascript
+import net from 'net';
+
+const server = net.createServer((client) => {
+  console.info("Client Connected");
+  client.on("data", data => {
+    console.info(`Recive data from client : ${data.toString()}`);
+    client.write(`Hello ${data.toString()}\n`);
+  })
+});
+server.listen(8080, 'localhost')
+```
+
+### Kode: Net Client
+
+```javascript
+import net from 'net';
+
+const connection = net.createConnection({
+  port: 8080,
+  host: '127.0.0.1'
+});
+
+connection.addListener("data", data => {
+  console.info(`Recive data from server: ${data.toString('utf8')}`);
+});
+
+setInterval(() => {
+  connection.write(`${process.argv[2]}`);
+}, 2000);
+```
+
+## URL
+
+- URL merupakan standard library untuk bekerja dengan URL
+- [Standard Library URL](https://nodejs.org/dist/latest-v16.x/docs/api/url.html)
+
+### Kode: URL
+
+```javascript
+import { URL } from 'url';
+
+const link = new URL('https://www.programmerzamannow.com/belajar?kelas=nodejs');
+
+console.info(link.toString());
+console.info(link.protocol);
+console.info(link.host);
+console.info(link.pathname);
+console.info(link.searchParams);
+console.info(link.password);
+console.info(link.href);
+console.info(link.origin);
+console.info(link.hash);
+
+```
+
+### Kode: Mengubah URL
+
+```javascript
+// Mengubah url
+link.host = 'www.yusrilarzaqi.github.io';
+link.searchParams.append('status', 'OK');
+```
+
+## Util
+
+- Util adalah standard library yang berisikan utility-utility yang bisa kita gunakan untuk mempermudah pembuatan kode program di NodeJS.
+- [Standard Library Util](https://nodejs.org/dist/latest-v16.x/docs/api/util.html)
+
+### Kode: Util
+
+```javascript
+import util from 'util';
+
+const nama = "Yusril";
+
+console.info(`Nama : ${nama}`);
+console.info(util.format("Nama : %s", nama));
+const person = {
+  firstName: "Yusril",
+  lastName : "Arzaqi"
+};
+console.info(util.format("Person : %j", person));
+console.info(JSON.stringify(person));
+```
+
+## Zlib
+
+- Zlib merupakan standard library yang digunakan untuk melakukan kompresi menggunakan Gzip
+- [Standard Library Zlib](https://nodejs.org/dist/latest-v16.x/docs/api/zlib.html)
+
+### Kode: Zlib Compress
+
+```javascript
+import {readFileSync, writeFileSync} from 'fs';
+import zlib from 'zlib';
+
+const source = readFileSync('tmp.txt');
+const result = zlib.gzipSync(source);
+
+writeFileSync('data.bin', result);
+```
+
+### Kode: Zlib Decompress
+
+```javascript
+import fs from 'fs';
+import zlib from 'zlib';
 
 
+const source = fs.readFileSync('data.bin')
+const result = zlib.gunzipSync(source)
 
+fs.writeFileSync('data.txt', result);
+```
 
+## Console
 
+- Console adalah standard library yang sering digunakan.
+- Secara global, object console bisa kita gunakan tanpa harus meng-import module, dan console melakukan print text-nya ke stdout.
+- Namun kita bisa juga membuat object Console sendiri jika kita mau.
+- [Standard Library Console](https://nodejs.org/dist/latest-v16.x/docs/api/console.html)
 
+### Kode: Console
 
+```javascript
+import {Console} from 'console';
+import fs from 'fs';
 
+const logFile = fs.createWriteStream('application.log')
 
+const log = new Console({
+  stdout: logFile,
+  stderr: logFile
+});
 
+log.info("Hello World")
+log.err("404")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
 
 
 
