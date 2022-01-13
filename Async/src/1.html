@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Set Timeout</title>
+	<script charset="utf-8">
+		function callback() {
+			console.log("Hello World");
+		}
+
+		function buttonClik() {
+			// Async
+			setInterval(() => {callback()}, 1000);
+			console.log("Success Click Button");
+		}
+	</script>
+</head>
+
+<body>
+	<button onclick="buttonClik()">Click Me!</button>
+</body>
+
+</html>
