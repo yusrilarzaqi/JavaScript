@@ -11,7 +11,7 @@
 ## Pengenalan NodeJS
 
 - NodeJS diperkenalkan pertama kali oleh Ryan Dahl pada tahun 2009
-- NodeJS merupakan teknologi yang bisa digunakan untuk menjalankan kode Javascript diluar Web Browser
+- NodeJS merupakan teknologi yang bisa digunakan untuk menjalankan kode JavaScript diluar Web Browser
 - NodeJS dibuat dari V8 Engine, yaitu Engine untuk Google Chrome.
 - NodeJS merupakan project yang Free dan OpenSource
 - [NodeJS](https://nodejs.org)
@@ -706,13 +706,181 @@ const log = new Console({
 
 log.info("Hello World")
 log.err("404")
+```
+
+## Worker Threads
+
+- Worker Threads adalah standard library yang bisa kita gunakan untuk menggunakan thread ketika mengeksekusi JavaScript secara paralel
+- Worker Threads sangat cocok ketika membuat kode program yang butuh jalan secara paralel, dan biasanya kasusnya adalah ketika kode program kita membutuhkan process yang CPU intensive, seperti misalnya *enkripsi* atau *kompresi*
+- Cara kerja Worker Threads mirip dengan Web Worker di JavaScript Web API
+- [Standard Library Worker Threads](https://nodejs.org/dist/latest-v16.x/docs/api/worker-threads.html)
+
+### Kode: Main Thread
+
+```javascript
+import {threadId, Worker} from 'worker_threads':
+
+const worker1 = new Worker("./worker.mjs");
+const worker2 = new Worker("./worker.mjs");
+
+worker1.addListener("message", message => {
+  console.info(`thread-${threadId} rechive message : ${message}}}`);
+})
+
+worker2.addListener("message", message => {
+  console.info(`thread-${threadId} rechive message : ${message}}}`);
+})
+
+worker1.postMessage(10);
+worker2.postMessage(10);
+```
+
+### Kode: Worker
+
+```javascript
+import {threadId, parentPort} from 'worker_threads';
+
+parentPort.addListener("message", message => {
+  for (let i = 0; i < message; i++) {
+    console.info(`thread-${threadId} send message ${i}`);
+    parentPort.postMessage(i);
+  }
+  parentPort.close();
+})
+```
+
+## HTTP Client
+
+- NodeJS juga memiliki standard library untuk HTTP.
+- Salah satu fitur di module HTTP adalah HTTP Client, dimana kita bisa melakukan simulasi HTTP Request menggunakan NodeJS.
+- Terdapat 2 jenis module HTTP di NodeJS, HTTP, dan HTTPS
+- [Standard Library HTTP](https://nodejs.org/dist/latest-v16.x/docs/api/http.html)
+- [Standard Library HTTPS](https://nodejs.org/dist/latest-v16.x/docs/api/https.html)
+
+### Kode: HTTPS Client
+
+```javascript
+import https from "https";
+
+const url = 'https://hookb.in/1gmqywqrLLfd6N0061k8'
+const request = https.request(url, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "Accept"      : "application/json"
+  }
+}, response => {
+  response.addListener("data", data => {
+    console.info(`Recive : ${data.toString()}`);
+  });
+});
+
+const body = JSON.stringify({
+  firstName: "Yusril",
+  lastName: "Arzaqi",
+});
+
+request.write(body);
+request.end();
 
 ```
 
+## HTTP Server
 
+- Standard Library HTTP juga tidak bisa digunakan untuk membuat HTTP Client, tapi juga bisa digunakan untuk membuat HTTP Server.
+- Untuk kasus sederhana, cocok sekali jika ingin membuat HTTP Server menggunakan standard library NodeJS, namun untuk kasus yang lebih kompleks, direkomendasikan menggunakan library atau framework yang lebih mudah penggunaannya. 
+- [Standard Library HTTP](https://nodejs.org/dist/latest-v16.x/docs/api/http.html)
 
+### Kode: HTTP Server
 
+```javascript
+import http from 'http';
 
+const port = 8080;
 
+const server = http.createServer((req, res) => {
+  res.write("Hello World");
+  res.end();
+});
 
+server.listen(port);
+```
+
+### Kode: Request Response HTTP Server
+
+```javascript
+import http from 'http';
+
+const port = 8080;
+const server = http.createServer((req, res) => {
+  if (req.method === 'POST') {
+    request.addListener("data", data => {
+      res.setHeader("Content", "application/json");
+      res.write(data);
+    })
+  } else {
+    res.write("Hello World");
+  }
+  res.end();
+})
+
+server.listen(port, () =>{
+  console.info(`Listen to port ${port}`);
+})
+```
+
+## Cluster
+
+- Seperti yang dijelaskan di awal, bahwa NodeJS itu secara default dia berjalan single thread, kecuali jika kita membuat thread manual menggunakan worker thread, tetapi dalam satu process.
+- NodeJS memiliki standard library bernama Cluster, dimana kita bisa menjalankan beberapa process NodeJS secara sekaligus.
+- Ini sangat cocok ketika kita menggunakan CPU yang multicore, sehingga semua core bisa kita utilitasi denganbaik, misal kita jalankan process NodeJS sejumlah CPU core.
+- [Standard Library Cluster](https://nodejs.org/dist/latest-v16.x/docs/api/cluster.html)
+
+### Cluster Primary dan Worker
+
+- Di dalam Cluster, terdapat 2 jenis aplikasi, Primary dan Worker.
+- Primary biasanya digunakan sebagai kooridator atau manajer untuk para Worker.
+- Sedangakan Worker sendiri adalah aplikasi yang menjalankan tugasnya.
+
+### Kode: Cluster Primary
+
+```javascript
+import cluster from "cluster";
+import http from "http";
+import os from "os";
+import process from "process";
+
+if (cluster.isPrimary) {
+  for (let i = 0; i < os.cpus.length; i++) {
+    cluster.fork();
+  }
+
+  cluster.addListener("exit", worker => {
+    console.info(`Worker ${worker.id} is exited`);
+  });
+}
+```
+
+### Kode: Cluster Worker
+
+```javascript
+if (cluster.isWorker){
+  const port = 8080;
+  const server = http.createServer((req, res) => {
+    res.write(`Response from process ${process.pid}`);
+    res.end();
+    process.exit();
+  })
+
+  server.listen(port, () => console.info(`Listen to port ${port}`));
+  console.info(`Start Cluster Worker ${process.pid}`)
+}
+```
+
+## Materi Selanjutnya
+
+- NPM (Node Package Manager)
+- NodeJS Unit Test
+- ExpressJS
+- Dan lain-lain
 
