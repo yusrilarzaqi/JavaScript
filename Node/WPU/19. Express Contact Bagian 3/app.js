@@ -1,10 +1,11 @@
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const {loadContact, findContact, addContact, cekDuplikat, deleteContact, updateContacts} = require('./utils/contacts');
-const { body, validationResult, check } = require('express-validator');
+const {
+  body, validationResult, check 
+} = require('express-validator');
 const port = 8080;
 const app = express();
-
 
 // gunakan ejs
 app.set('view engine', 'ejs');
@@ -14,7 +15,7 @@ app.use(expressLayouts);
 
 // built-in middleware
 app.use(express.static('public'));
-app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+pp.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 app.get('/', (req, res) => {
   const mahasiswa = [{

@@ -1,4 +1,3 @@
-
 // mengambil container
 const container = document.querySelector(".container");
 const jumbo = document.querySelector('.jumbo');

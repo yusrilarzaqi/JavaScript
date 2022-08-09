@@ -1,5 +1,3 @@
-/*
- * jquery
 $('.search-button').on('click', function() {
   $.ajax({
     url: 'http://www.omdbapi.com/?apikey=f4d69482&s=' + $('.input-keyword').val(),
@@ -35,7 +33,6 @@ $('.search-button').on('click', function() {
 
   });
 });
-*/
 
 /* Fetch */ 
 const searchButton = document.querySelector('.search-button');

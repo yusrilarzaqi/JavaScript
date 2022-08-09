@@ -16,3 +16,5 @@ for (let i = 0; i < p.length; i++) {
 // ambil elemen 1 saja index ke-n
 var h1 = document.getElementsByTagName('h1')[0];
 console.log(h1);
+
+document.getRootNode
