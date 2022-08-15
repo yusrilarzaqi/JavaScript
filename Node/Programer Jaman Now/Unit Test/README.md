@@ -445,7 +445,6 @@ export function callMe(name) {
 ```
 
 ```javascript
-
 import { callMe, MyException } from '../src/exception';
 
 test('Exception', () => {
@@ -454,3 +453,10 @@ test('Exception', () => {
 	expect(() => callMe('Yusril')).toThrow('Ups my exception happens');
 });
 ```
+
+## Not Matchers
+
+- Saat melakukan pengecekan menggunakan matchers, kadang-kadang kita ingin melakukan pengecekan kebalikannya.
+- Misal tidak sama dengan, tidak lebih dari, tidak contains, dan lain-lain.
+- Jest memiliki fitur untuk melakukan "not" di Matchers nya, dengan menggunakan property not di matchers, secara otomatis kita akan melakukakn pengecekan kebalikannya.
+- Semua jenis matchers yang sudah kita bahas, mendukung property not ini.
