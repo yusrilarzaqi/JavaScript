@@ -383,4 +383,74 @@ test('string', () => {
 |   `.toContain(item)`    |  Memastikan value array memiliki item, dimana pengecekan item menggunakan `toBe()`   |
 | `.toContainEqual(item)` | Memastikan value array memiliki item, dimana pengecekan item menggunakan `toEqual()` |
 
-##
+### Kode : Arrays Matchers
+
+```javascript
+describe('Arrays Testing', () => {
+	test('array', () => {
+		const names = ['Yusril', 'Arzaqi'];
+		expect(names).toContain('Arzaqi');
+		expect(names).toEqual(['Yusril', 'Arzaqi']);
+	});
+
+	test('array object', () => {
+		const persons = [
+			{
+				name: 'Yusril',
+			},
+			{
+				name: 'Arzaqi',
+			},
+		];
+		expect(persons).toContainEqual({ name: 'Arzaqi' });
+		expect(persons).toEqual([
+			{
+				name: 'Yusril',
+			},
+			{
+				name: 'Arzaqi',
+			},
+		]);
+	});
+});
+```
+
+## Exceptions Matchers
+
+- Saat membuat kode program, kadang kita sering membuat exception.
+- Dalam unit test pun, kadang kita berharap sebuah exception terjadi.
+- Jest juga memiliki matchers untuk melakukan pengecekan exception.
+- Khusus untuk jenis matchers exception, kita perlu menggunakan closure function di value `except()` nya, hal ini untuk memastikan exception ditangkap oleh matchers, jika tidak menggunakan closure function, maka exception akan terlanjur terjadi sebuah terjadi sebelum kita memanggil `except()` function.
+
+### Exceptions Matchers Functions
+
+|       Function       |                          Keterangan                           |
+| :------------------: | :-----------------------------------------------------------: |
+|     `.toThrow()`     |              Memastikan terjadi exception apapun              |
+| `toThrow(exception)` | Memastikan terjadi exception sesuai dengan expected exception |
+| `.toThrow(message)`  |   Memastikan terjadi exception sesuai dengan string message   |
+
+### Kode : Exceptions Matchers
+
+```javascript
+export class MyException extends Error {}
+
+export function callMe(name) {
+	if (name === 'Yusril') {
+		throw new MyException('Ups my exception happens');
+	} else {
+		return 'OK';
+	}
+}
+```
+
+```javascript
+
+import { callMe, MyException } from '../src/exception';
+
+test('Exception', () => {
+	expect(() => callMe('Yusril')).toThrow();
+	expect(() => callMe('Yusril')).toThrow(MyException);
+	expect(() => callMe('Yusril')).toThrow('Ups my exception happens');
+});
+```
