@@ -371,4 +371,16 @@ test('string', () => {
 });
 ```
 
-## Array Matcher
+## Arrays Matcher
+
+- Jest juga memiliki function yang bisa kita gunakan untuk mengecek data di dalam sebuah value.
+- Jika ingin memastikan bahwa array sama, kita bisa menggunakan `toEqual()`.
+
+### Arrays Matcher
+
+|        Function         |                                      Keterangan                                      |
+| :---------------------: | :----------------------------------------------------------------------------------: |
+|   `.toContain(item)`    |  Memastikan value array memiliki item, dimana pengecekan item menggunakan `toBe()`   |
+| `.toContainEqual(item)` | Memastikan value array memiliki item, dimana pengecekan item menggunakan `toEqual()` |
+
+##
