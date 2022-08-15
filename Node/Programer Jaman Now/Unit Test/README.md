@@ -347,3 +347,28 @@ test('truthiness', () => {
 | `.toBeGreaterThanOrEqual(n)` | Memastikan value lebih besar atau sama dengan n |
 |      `.toBeLessThan(n)`      |       Memastikan value lebih kecil dari n       |
 |  `.toBeLessThanOrEqual(n)`   | Memastikan value lebih kecil atau sama dengan n |
+
+## String Matcher
+
+- Jest juga memiliki matcher function yang digunakan untuk value berupa String.
+- Jika kita ingin memastikan sebuah string sama, kita bisa menggunakan `toBe()` atau `toEqual()`.
+
+### String Matcher Functions
+
+|     Function     |              Keterangan              |
+| :--------------: | :----------------------------------: |
+| `toMatch(regex)` | Memastikan value sesuai dengan regex |
+
+### Kode : String Matcher
+
+```javascript
+test('string', () => {
+	const name = 'Yusril Arzaqi';
+
+	expect(name).toBe('Yusril Arzaqi');
+	expect(name).toEqual('Yusril Arzaqi');
+	expect(name).toMatch(/zaqi/);
+});
+```
+
+## Array Matcher
