@@ -460,3 +460,111 @@ test('Exception', () => {
 - Misal tidak sama dengan, tidak lebih dari, tidak contains, dan lain-lain.
 - Jest memiliki fitur untuk melakukan "not" di Matchers nya, dengan menggunakan property not di matchers, secara otomatis kita akan melakukakn pengecekan kebalikannya.
 - Semua jenis matchers yang sudah kita bahas, mendukung property not ini.
+
+### Kode : Not Matchers
+
+```javascript
+describe('Not Matchers', () => {
+	test('String not', () => {
+		const name = 'Yusril Arzaqi';
+
+		expect(name).not.toBe('Bimo');
+		expect(name).not.toEqual('Dimas');
+		expect(name).not.toMatch(/Adam/);
+	});
+
+	test('Numbers Not', () => {
+		const value = 2 + 2;
+
+		expect(value).not.toBeGreaterThan(6);
+		expect(value).not.toBeLessThan(2);
+		expect(value).not.toBe(10);
+	});
+});
+```
+
+## Test Async Code
+
+- Saat membuat kode program JavaScript, penggunaan kode asynchronous pasti sering kita gunakan, baik itu menggunakan `Promise` atau menggunakan `async` `await`.
+- Jest terintegrasi dengan baik jika kita ingin melakukan pengetesan terhadap kode yang `async`.
+- Namun saat kita melakukan pengetesan kode `aysnc`, kita harus memberi tahu ke Jest, hal ini agar Jest tahu dan bisa menggunakan kode `async` nya, sebelum melanjutkan ke unit test selanjutnya.
+- Cara sebenarnya sangat mudah, kita cukup gunakan `async` code di closure function Jest.
+
+### Kode : Async Function
+
+```javascript
+export const sayHelloAysnc = (name) => {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => [
+			name ? resolve(`Hello ${name}`) : reject('Name is empty'),
+		]);
+	}, 1000);
+};
+```
+
+### Kode : Test Async Function
+
+```javascript
+import { sayHelloAysnc } from '../src/async';
+
+test('Async Test', async () => {
+	const result = await sayHelloAysnc('Yusril');
+	console.log(result);
+	expect(result).toBe('Hello Yusril');
+});
+```
+
+### Error : Regenerator Runtime
+
+```
+Test suite failed to run
+
+RefrenceError : regeneratorRuntime is not defined
+```
+
+### Regenerator Runtime Error
+
+- Jangan khawatir jika terjadi regenerator runtime error.
+- Ini adalah error yang terjadi di Babel, hal ini secara default Babel tidak memiliki melakukan memiliki fitur untuk melakukan kompilasi runtime ketika menemukan fitur egenerator atau `async` function.
+- Kita bisa menambahkan plugin untuk transform dan regenerator dengan menambahkan dependency :
+
+```sh
+npm install @babel/plugin-transform-runtime --save-dev
+```
+
+- selanjutnya tambahkan di `babel.config.json`
+
+### Kode : Babel Config
+
+```json
+{
+	"presets": ["@babel/preset-env"],
+	"plugin": [
+		[
+			"@babel/plugin-transorm-runtim",
+			{
+				"regenerator": true
+			}
+		]
+	]
+}
+```
+
+### Async Matchers
+
+- Sebelumnya kita menggunakan `async` `await` await untuk melakukan matchers, sebenarnya Jest juga memiliki fitur matchers terhadap data `aysnc` atau `Promise`.
+- Hal ini mempermudah kita ketika ingin melakukan mathers, sehingga tidak perlu melakukan `await` pada `async` functionnya.
+- Semua Async Matchers mengembalikan Promise.
+
+### Async Matchers Functions
+
+|          Function          |                                          Keterangan                                          |
+| :------------------------: | :------------------------------------------------------------------------------------------: |
+| `expect(promise).resolves` | Expektasi bahwa promise sukses, dan selanjutnya bisa kita gunakan Matchers function lainnya. |
+| `expect(promise).rejects`  | Expektasi bahwa promise gagal, dan sejanjutnya kita bisa gunakan Matchers function lainnya.  |
+
+### Kode : Async Matchers Functions
+
+```javascript
+
+```
