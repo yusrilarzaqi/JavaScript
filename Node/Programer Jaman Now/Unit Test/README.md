@@ -316,3 +316,34 @@ test('test toEqual', () => {
 |   `expect(value).toBeFalsy()`   | Memastikan value bernilai apapu, asal if statement mengganggap `false` |
 
 ### Kode : Truthiness Matchers
+
+```javascript
+test('truthiness', () => {
+	let value = null;
+	expect(value).toBeNull();
+	expect(value).toBeDefined();
+	expect(value).toBeFalsy();
+
+	value = undefined;
+	expect(value).toBeUndefined();
+	expect(value).toBeFalsy();
+
+	value = 'Yusril';
+	expect(value).toBeTruthy();
+	expect(value).toBe('Yusril');
+});
+```
+
+### Numbers Matchers
+
+- Jest juga memiliki matcher untuk digunakan untuk value berupa number.
+- Ketika value berupa number, kita juga bisa menggunakan `toBe()` dan `toEqual()`, untuk memastikan bahwa nilai number bernilai sama dengan expected.
+
+### Numbers Matcher Function
+
+|           Function           |                   Keterangan                    |
+| :--------------------------: | :---------------------------------------------: |
+|    `.toBeGreaterThan(n)`     |       Memastikan value lebih beasr dari n       |
+| `.toBeGreaterThanOrEqual(n)` | Memastikan value lebih besar atau sama dengan n |
+|      `.toBeLessThan(n)`      |       Memastikan value lebih kecil dari n       |
+|  `.toBeLessThanOrEqual(n)`   | Memastikan value lebih kecil atau sama dengan n |
