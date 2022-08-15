@@ -284,18 +284,35 @@ npx jest --runTestsByPath test/sum.test.js
 
 ```javascript
 test('test toBe', () => {
-  const name = "Yusril ";
-  const hello = `Hello ${name}`;
+	const name = 'Yusril ';
+	const hello = `Hello ${name}`;
 
-  expect(hello).toBe("Hello Yusril")
-})
+	expect(hello).toBe('Hello Yusril');
+});
 
-test("test toEqual", () => {
-  const person = {
-      id : "185512"
-    };
-  Object.assign(person, {name: "Yusril"})
-})
-
-  expect(person).toEqual({id: '185512', name: "Yusril"})
+test('test toEqual', () => {
+	const person = {
+		id: '185512',
+	};
+	Object.assign(person, { name: 'Yusril' });
+	expect(person).toEqual({ id: '185512', name: 'Yusril' });
+});
 ```
+
+## Truthiness Matchers
+
+- Dalam unit test, kadang kita ingin membedakan antara undefined, null dan false.
+- Dan kadang kita ingin melakukan expektasi nilai tersebut.
+- Jest memiliki matcher untuk melakukan hal tersebut juga.
+
+### Truthiness Matchers Function
+
+|            Function             |                               Keterangan                               |
+| :-----------------------------: | :--------------------------------------------------------------------: |
+|   `expect(value).toBeNull()`    |                     Memastikan value adalah `null`                     |
+| `expect(value).toBeUndefined()` |                  Memastikan value adalah `undefined`                   |
+| `expect(value).toBeUndefined()` |                  Memastikan value adalah `undefined`                   |
+|  `expect(value).toBeTruthy()`   | Memastikan value bernilai apapu, asal if statement mengganggap `true`  |
+|   `expect(value).toBeFalsy()`   | Memastikan value bernilai apapu, asal if statement mengganggap `false` |
+
+### Kode : Truthiness Matchers
