@@ -1,4 +1,4 @@
-import { sum } from '../src/sum';
+import { sum, sumAll } from '../src/sum';
 
 describe('Program Function Sum', () => {
 	test('sum(1, 2) must be 3', () => {
@@ -17,5 +17,9 @@ describe('Program Function Sum', () => {
 
 	it('should must be 200', () => {
 		expect(sum(100, 100)).toBe(200);
+	});
+
+	it('Test Sum All', () => {
+		expect(sumAll(1, 1, 1, 1, 1)).toBe(5);
 	});
 });
