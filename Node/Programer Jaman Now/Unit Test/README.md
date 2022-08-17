@@ -200,7 +200,7 @@ test('sum(1, 2) must be 3', () => {
 
 ### Jest Code Transformation
 
-- Jest mendukung code transformation, yaitu fitur dimana kita bisa melakukan pengubahan kode program sebelum dijalankkan oleh Jest.
+- Jest mendukung code transformation, yaitu fitur dimana kita bisa melakukan pengubahan kode program sebelum dijalankan oleh Jest.
 - Fitur ini yang dimanfaatkan untuk melakukan ke kode JavaScript yang bisa dimengerti oleh Jest, memanfaatkan library Babel.
 - [Code Transformation](https://jestjs.io/docs/code-transformation)
 
@@ -912,3 +912,33 @@ test.each(table)(
 	}
 );
 ```
+
+## Concurrent Test
+
+- Secara default, semua unit test akan dijalankan secara squentila, dan unit test sejanjutnya akan dijalankan ketiak unit test sebelumnya telah selamat.
+- Jest juga mendukung concurrent unit test, dimana kita bisa menandai sebuah unit test agar jalan secara concurrent atau async sehingga tidak perlu ditunggu.
+- Saat dibuatnya materi ini, fitur concurrent sendiri masih experimental atau belum stabil.
+- [Test Concurrent Name Function Timeout](https://jestjs.io/docs/api#testconcurrentname-fn-timeout)
+
+### Kode : concurrent Test
+
+```javascript
+import { sayHelloAysnc } from '../src/async';
+
+test.concurrent('Concurrent 1', async () => {
+	await expect(sayHelloAysnc('Yusril')).resolves.toBe('Hello Yusril');
+});
+
+test.concurrent('Concurrent 2', async () => {
+	await expect(sayHelloAysnc('Yusril')).resolves.toBe('Hello Yusril');
+});
+
+test.concurrent('Concurrent 3', async () => {
+	await expect(sayHelloAysnc('Yusril')).resolves.toBe('Hello Yusril');
+});
+```
+
+### Membatasi Concurrent
+
+- Kita bisa membatasi berapa banyak concurrent test yang berjalan dengan cara menambahkan konfigurasi di Jest nysa.
+- [Max Concurrency Number](https://jestjs.io/docs/configuration#maxconcurrentcy-number)
