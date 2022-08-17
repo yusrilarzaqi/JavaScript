@@ -942,3 +942,17 @@ test.concurrent('Concurrent 3', async () => {
 
 - Kita bisa membatasi berapa banyak concurrent test yang berjalan dengan cara menambahkan konfigurasi di Jest nysa.
 - [Max Concurrency Number](https://jestjs.io/docs/configuration#maxconcurrentcy-number)
+
+## Todo Function
+
+- Gunckan Todo Function ketika kita berencana membuat unit test, namin dilakukan.
+- Todo Function akan ditampilkan sebagai summary ketika kita menjalankan unit test, untuk mengingatkan kita.
+- [Test Todo Name](https://jestjs.io/docs/api#testtodoname)
+
+### Kode : Todo Function
+
+```javascript
+test.todo('Create test for sumAll() big numbers');
+
+test.todo('Create test for sum() negative numbers');
+```
