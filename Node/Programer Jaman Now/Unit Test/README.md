@@ -956,3 +956,33 @@ test.todo('Create test for sumAll() big numbers');
 
 test.todo('Create test for sum() negative numbers');
 ```
+
+## Failing Function
+
+- Dalam membuat unit test, jangan hanya membuat sknario sukses.
+- Kadang kita juga perlu membuat skenario gagal, atau ekspektasi kita gagal, contoh misal ketika kita mengirim data tidak valid, maka kita berharap kalau kode nya terjadi error.
+- Pada kasus ini, Jest menyediakan fitur Failing Function
+- [Test Failing Name Function](https://jestjs.io/docs/api#testfailingname-fn-timeout)
+
+### Kode : Say Hello Function
+
+```javascript
+export const sayHello = (name) => {
+	if (name) return `Hello ${name}`;
+	else throw new Error('Name is required');
+};
+```
+
+### Kode : Failing Test 
+
+```javascript
+import { sayHello } from '../src/sayHello';
+
+test('sayHello success', () => {
+	expect(sayHello('Yusril')).toBe('Hello Yusril');
+});
+
+test.failing('sayHello error', () => {
+	sayHello(null);
+});
+```
