@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1660650844384" clover="3.2.0">
-  <project timestamp="1660650844384" name="All files">
-    <metrics statements="13" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="6" coveredmethods="0" elements="23" coveredelements="0" complexity="0" loc="13" ncloc="13" packages="1" files="3" classes="3"/>
+<coverage generated="1660710334308" clover="3.2.0">
+  <project timestamp="1660710334308" name="All files">
+    <metrics statements="10" coveredstatements="3" conditionals="4" coveredconditionals="0" methods="7" coveredmethods="2" elements="21" coveredelements="5" complexity="0" loc="10" ncloc="10" packages="1" files="3" classes="3"/>
     <file name="async.js" path="/home/yusril/Documents/javascript/Node/Programer Jaman Now/Unit Test/belajar-unit-test/src/async.js">
       <metrics statements="3" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
       <line num="1" count="0" type="stmt"/>
@@ -16,13 +16,10 @@
       <line num="7" count="0" type="stmt"/>
     </file>
     <file name="sum.js" path="/home/yusril/Documents/javascript/Node/Programer Jaman Now/Unit Test/belajar-unit-test/src/sum.js">
-      <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <line num="6" count="0" type="stmt"/>
-      <line num="12" count="0" type="stmt"/>
-      <line num="13" count="0" type="stmt"/>
-      <line num="14" count="0" type="stmt"/>
-      <line num="15" count="0" type="stmt"/>
-      <line num="17" count="0" type="stmt"/>
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+      <line num="6" count="1" type="stmt"/>
+      <line num="12" count="1" type="stmt"/>
+      <line num="13" count="12" type="stmt"/>
     </file>
   </project>
 </coverage>

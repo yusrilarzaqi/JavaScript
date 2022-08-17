@@ -566,5 +566,349 @@ npm install @babel/plugin-transform-runtime --save-dev
 ### Kode : Async Matchers Functions
 
 ```javascript
+it('Async Matchers', async () => {
+	await expect(sayHelloAysnc('Yusril')).resolves.toBe('Hello Yusril');
+	await expect(sayHelloAysnc()).rejects.toBe('Name is empty');
+});
+```
 
+## Setup Function
+
+- Kadang kita saat membuat unit test, kita membuat kode yang perlu dibuat sebelum unit test berjalan.
+- Selain itu, kadang kita juga membuat kode yang perlu dilakukan setelah unit test berjalan.
+- Jest memiliki fitur untuk menangani kasus seperti ini.
+
+### Setup Functions
+
+|        Function        |                                                                   Keterangan                                                                   |
+| :--------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------: |
+| `beforeEach(function)` | Function akan dieksekusi sebelum unit test berjalan, jika terdapat lima unit test dalam file, artinya akan dieksekusi juga sebanyak lima kali. |
+| `afterEach(function)`  |    Function akan dieksekusi setelah unit test selesai, jika terdapat lima test dalam file, artinya akan dieksekusi juga sebanyak lima kali.    |
+| `beforeAll(function)`  |                                   Function akan dieksekusi sekali semua unit test berjalan di file unit test                                   |
+|  `afterAll(function)`  |                               Function akan dieksekusi sekali setelah semua unit test selesai di file unit test                                |
+
+### One-Time Setup Function
+
+- Namun kadang-kadang, kita ingin membuat kode yang hanya dieksekusi sekali saja dalam sebuah file unit test.
+- Sekali sebelum semua unit test, dan sekali setelah semua unit test.
+- Jest juga menyediakan fitur tersebut.
+
+### Kode : Setup
+
+```javascript
+beforeEach(() => {
+	info('Before Each');
+});
+
+afterEach(() => {
+	info('After Each');
+});
+```
+
+---
+
+```javascript
+beforeAll(() => {
+	console.info('Before All');
+});
+
+afterAll(() => {
+	console.info('After All');
+});
+```
+
+### Async Setup Function
+
+- Async juga bisa dilakukan di Setup Function
+- Kita hanya perlu menggunakan kata kunci `async` pada parameter di Setup Functionnya.
+
+## Scoping
+
+- Saat kita menggunaknan Setup Function, secara default akan dieksekusi pada setiap `test()` function yang terdapat di file unit test.
+- Jest memiliki fitur scoping atau grouping, dimana kita bisa membuat group unit test menggunakan function `describe()`.
+- Setup Functio yang dibuat di dalam `describe()` hanya digunakan untuk unit test di dalam `describe()` tersebut.
+- Namun setup function diluar `describe()` secara otomatis juga digunakan di dalam `describe()`.
+
+### Kode : Scoping
+
+```javascript
+describe('inner scope 1', () => {
+	beforeAll(() => info('Inner Before All 1'));
+	afterAll(() => info('Inner After All 1'));
+	beforeEach(() => info('Inner Before Each 1'));
+	afterEach(() => info('Inner After Each 1'));
+	test('test inner 1', () => info('Test inner 1'));
+});
+```
+
+### Nested Scoping
+
+- Jest juga mendukung nested scoping, artinya kita bisa membuat scoping menggunakan `describe()` di dalam `describe()` function.
+
+### Kode : Nested Scoping
+
+```javascript
+beforeEach(() => console.info('Before Each outer'));
+afterEach(() => console.info('After Each outer'));
+
+describe('Inner Scope 1', () => {
+	beforeEach(() => console.info('Before Each inner 1'));
+	afterEach(() => console.info('After Each inner 1'));
+	describe('Inner innner Scope 2', () => {
+		beforeEach(() => console.info('Before Each inner inner 1'));
+		afterEach(() => console.info('After Each inner inner 1'));
+		it('test 1', () => console.info('test 1'));
+		it('test 2', () => console.info('test 2'));
+	});
+});
+```
+
+## Code Coverage
+
+- Saat kita membuat unit test,, kadang kita ingin tahu apakah semua kode kita sudah tercakupi dengan semua skenario unit test kita atau belum.
+- Jest memiliki fitur yang bernama _Cove Coverage_, dengan ini, kita bisa melihat kode mana yang sudah tercakupi dengan unit test, dan mana yang berlum.
+- Praktek ini merupakan salah satu best practice dengan menunjukan jumlah presentasi kode yang harus tercakupi oeh unit test, misal 80%.
+
+### Menggunakan Fitur Code Coverage
+
+- Secara default, Jest tidak menggunakan fitur Code Coverage, kita ingin menggunakan Code Coverage, kita perlu ubah Konfigurasi Jest.
+- Caranya kita tambahkan `collectCoverage` dengan nilai `true`.
+- [collectCoverage](https://jestjs.io/docs/configuration#collectcoverage-boolean)
+
+### Kode : Mengaktifkan Fitur Code Coverage
+
+```json
+{
+	"jest": {
+		"verbose": true,
+		"transform": {
+			"^.+\\.[t|j]sx?$": "babel-jest"
+		},
+		"collectCoverage": true
+	}
+}
+```
+
+|     File     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s |
+| :----------: | :-----: | :------: | :-----: | :-----: | :---------------: |
+|  All files   |  88.88  |    75    |   100   |  85.71  |                   |
+|   async.js   |   100   |   100    |   100   |   100   |                   |
+| exception.js |  66.66  |    50    |   100   |  66.66  |         7         |
+|    sum.js    |   100   |   100    |   100   |   100   |                   |
+
+### Folder Coverage
+
+- Jest Code Coverage secara otomatis membuat folder coverage di project kita
+- Jangan lua untuk meng-ignore folder tersebut agar tidak tercommit ke project kita.
+- Folder coverage tersebut berisi laporan Code Coverage berupa file html yang bisa kita lihat dengan mudah.
+
+### Coverage Threshold
+
+- Kadang ada kalanya kita ingin memastikan presentase Code Coverage, hal ini agar programmer dalam project pasti membuat unit test dengan baik.
+- Jest memiliki fitur untuk menantukan Coverage Threshold dengan presentase, dimana jika Threshold nya dibawah presentase yang sudah ditentukan, secara otomatis maka unit test akan gagal.
+- Kita bisa tambahkan konfigurasi coverage Threshold.
+- [Coverage Threshold Object](https://jestjs.io/docs/configuration#coveragethreshold-object)
+
+```json
+{
+	"jest": {
+		"coverageThreshold": {
+			"global": {
+				"branches": 80,
+				"functions": 80,
+				"lines": 80,
+				"statements": -10
+			}
+		}
+	}
+}
+```
+
+### Jenis Code Coverage
+
+|   Jenis    |  Keterangan  |
+| :--------: | :----------: |
+|  branches  | Alur Program |
+| functions  |   Function   |
+|   lines    |    Baris     |
+| statements |  Statement   |
+
+### Kode : Code Coverage
+
+```json
+{
+	"jest": {
+		"coverageThreshold": {
+			"global": {
+				"branches": 100,
+				"functions": 100,
+				"lines": 100,
+				"statements": 100
+			}
+		}
+	}
+}
+```
+
+### Collect Coverage
+
+- Kadang saat project kita sudah besar, kita ingin menentukan bagian kode mana yang ingin digunakan untuk menghitung Code Coveragenya.
+- Kita bisa menggunakan atribut `collectCoverageFrom`.
+- [Collect Coverage Array](https://jestjs.io/docs/configuration#collectcoveragefrom-array)
+
+## It Function
+
+- Sebelumnya untuk membuat unit test, kita menggunakan function `test()`.
+- Di Jest, terdapat alias functiono `test()`, yaitu `it()`.
+- Sebenarnya tidak ada bedanya dengan function `test()`, hanya saja, kadang ada programmer yang lebih suka menggunakan function `it()` agar unit test dibuat mirip dengan cerita ketika dibaca kodenya.kokde
+
+### Kode : It Function
+
+```javascript
+import { sumAll } from '../src/sum';
+
+describe('When call sumAll(10, 20, 30, 40)', () => {
+	it('should get 100', () => {
+		expect(sumAll(10, 20, 30, 40)).toBe(100);
+	});
+});
+```
+
+## Skip Function
+
+- Saat membuat unit test, lalu kita mendapatkan masalah di salah satu unit test, kadang kita ingin meng-ignore unit test tersebut terlebih dahulu.
+- Kita tidak perlu menambahkan komentar pada unit test tersebut.
+- Kita bisa menggunakan skip function, yang secara otomatis akan menjadikan unit test tersebut ter-ignore dan tidak akan di eksekusi.
+- [Test Skip Name Function](https://jestjs.io/docs/api#testskipname-fn)
+
+### Kode : Skip Function
+
+```javascript
+test('test 1', () => {
+	console.info('test 1');
+});
+test('test 2', () => {
+	console.info('test 2');
+});
+test.skip('test 3', () => {
+	console.info('test 3');
+});
+test('test 4', () => {
+	console.info('test 4');
+});
+test('test 5', () => {
+	console.info('test 5');
+});
+```
+
+## Only Function
+
+- Ketika kita melakukan proses debugging di unit test di dalam sebuah file yang unit test nya banyak kadang kita ingin fokus ke unit test tertentu.
+- Jika kita menggunakan skip test yang lain, maka akan sulit jika terlalu banyak.
+- Kita bisa menggunakan Only Function, untuk memaksa dalam file tersebut, hanya unit test yang ditandai dengan Only yang di eksekusi.
+- [Test Only Name Function](https://jestjs.io/docs/api#testonlyname-fn-timeout)
+
+### Kode : Only Function
+
+```javascript
+test('test 1', () => {
+	console.info('test 1');
+});
+test('test 2', () => {
+	console.info('test 2');
+});
+test.only('test 3', () => {
+	console.info('test 3');
+});
+test('test 4', () => {
+	console.info('test 4');
+});
+test('test 5', () => {
+	console.info('test 5');
+});
+```
+
+## Each Function
+
+### Duplicate Unit Test
+
+- Salah satu kesalahan yang bisasanya dilakukan adalah membuat unit test yang duplicate.
+- Bisasanya alasan melakukan duplicate unit test, hanya karena data yang di test nya saja berbedaet norelativenumber
+
+### Kode : Duplicate Unit Test
+
+```javascript
+import { sumAll } from '../src/sum';
+
+it('sumAll(10, 10, 10, 10)', () => {
+	expect(sumAll(10, 10, 10, 10)).toBe(40);
+});
+
+it('sumAll(10, 10, 10, 10, 10, 10)', () => {
+	expect(sumAll(10, 10, 10, 10, 10, 10)).toBe(60);
+});
+```
+
+### Each Function
+
+- Pada kasus seperti ini, dimana kode unit test nya tidak berada, yang berbeda hanya datanya saja, sangat direkomendasikan menggunakan Each Function di Jest.
+- Each Function mungkinkan kita menggunakan data dalam bentuk array, yang akan di iterasi ke dalam kode unit test yang sama.
+- [Test Each Table Name](https://jestjs.io/docs/api#testeachtablename-fn-timeout)
+
+### Kode : Each Function
+
+```javascript
+const table = [
+	[[10, 10, 10], 30],
+	[[10, 10, 10, 10, 10], 50],
+	[[10, 10, 10, 10, 10, 10, 10], 70],
+];
+
+test.each(table)('test sumAll(%s) should result %i', (numbers, expected) => {
+	console.log(numbers);
+	console.log(expected);
+	expect(sumAll(numbers)).toBe(expected);
+});
+```
+
+### Object Sebagai Data.
+
+- Kadang, saat menggunakan data Array, jika terlalu banyak parameternya, maka akan membingungkan.
+- Each Function juga bisa menggunakan data Object, namun kita perlu melakukan destructuring.
+
+### Kode : Each Function dengan Object
+
+```javascript
+import { sumAll } from '../src/sum';
+
+const table = [
+	{ numbers: [10, 10, 10], expected: 30 },
+	{ numbers: [10, 10, 10, 10, 10], expected: 50 },
+	{ numbers: [10, 10, 10, 10, 10, 10, 10], expected: 70 },
+];
+
+test.each(table)(
+	'test sumAll($numbers) should result $expected',
+	({ numbers, expected }) => {
+		console.log(numbers);
+		console.log(expected);
+		expect(sumAll(numbers)).toBe(expected);
+	}
+);
+import { sumAll } from '../src/sum';
+
+const table = [
+	{ numbers: [10, 10, 10], expected: 30 },
+	{ numbers: [10, 10, 10, 10, 10], expected: 50 },
+	{ numbers: [10, 10, 10, 10, 10, 10, 10], expected: 70 },
+];
+
+test.each(table)(
+	'test sumAll($numbers) should result $expected',
+	({ numbers, expected }) => {
+		console.log(numbers);
+		console.log(expected);
+		expect(sumAll(numbers)).toBe(expected);
+	}
+);
 ```
