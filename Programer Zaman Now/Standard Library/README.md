@@ -415,6 +415,7 @@ console.info(date4);
 const date = new Date('2022-08-19T07:00:00.000Z');
 console.info(date.getTime());
 ```
+
 ### Date Getter dan Setter
 
 - Date juga memiliki banyak sekali method untuk mendapatkan informasi date dan juga mengubah informasi date, atau istilahnya adalah getter & setter.
@@ -436,3 +437,22 @@ console.info(date.getMilliseconds());
 console.info(date.getTimezoneOffset());
 ```
 
+## Math
+
+- `Math` merupakan class di JavaScript yang berisikan static property dan method untuk operasi matematika.
+- Ada banyak sekali static property dan method di `Math`.
+- `Math` hanya bisa digunakan untuk tipe data `Number`, tidak bisa digunakan untuk tipe data `BigInt`.
+- [Math](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math)
+
+### Kode : Math
+
+```javascript
+// Kode math
+const num = [10, 11, 9, 13, 8];
+console.info(Math.max(num));
+console.info(Math.min(num));
+
+console.info(Math.round(10.5)); // 11 dibulatakan ke atas
+console.info(Math.round(10.3)); // 10 dibulatakan ke atas
+console.info(Math.floor(10.5)); // 10 dibulatakan ke bawah
+```
