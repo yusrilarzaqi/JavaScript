@@ -290,3 +290,37 @@ console.info(Object.getOwnPropertyNames(person));
 ### Dan Function lain-lain
 
 - [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
+
+## JSON
+
+- JavaScript mendukung konversi data dari String json ke Object ataupun sebaliknya.
+- `JSON.stringify()` digunakan untuk melakukan konversi dari Object ke String.
+- `JSON.parse()` digunakan untuk melakukan konversi dari String ke Object.
+- [JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON)
+
+### Pengenalan JSON
+
+- **JSON** singkatan dari JavaScript Object Notation.
+- **JSON** merupakan data String yang bentuknya mirip dengan JavaScript Object.
+- Saat ini **JSON** banyak sekali digunakan untuk komunikasi antara Server dan Client.
+- [JSON](https://json.org/json-en.html)
+
+### Kode : JSON
+
+```javascript
+// JSON
+const person = {
+  firstName: 'Yusril',
+  lastName: 'Arzaqi',
+  address: {
+    contry: 'Indonesia',
+    city: 'Semarang',
+  },
+};
+
+const json = JSON.stringify(person);
+const personAgain = JSON.parse(json);
+
+console.info(json);
+console.info(personAgain);
+```
