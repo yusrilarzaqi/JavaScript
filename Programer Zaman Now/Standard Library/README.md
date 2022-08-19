@@ -528,3 +528,23 @@ map.forEach((value, key) => {
 	console.info(`${key} : ${value}`);
 });
 ```
+
+## Set
+
+- Set merupakan implementasi dari struktur data yang berisikan data-data unique.
+- Set mirip seperti Array, hanya saja isi datanya selalu unique.
+- Jika kita menambahkan data yang sama, maka data hanya akan diterima satu saja.
+- Set mengimplementasi kontrak iterable, sehingga bisa diiterasi secara default.
+- [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set)
+
+### Set Instance Method & Property
+
+|  Method & Property   |             Keterangan             |
+| :------------------: | :--------------------------------: |
+|        `size`        |            Panjang set             |
+|     `add(size)`      |      Menambahkan data ke set       |
+|     `has(value)`     | Mengecek apakah Set memiliki Value |
+|   `delete(value)`    |      Menghapus value dari Set      |
+| `forEach(value => )` |       Melakukan iterasi Set        |
+
+### Kode : Set
