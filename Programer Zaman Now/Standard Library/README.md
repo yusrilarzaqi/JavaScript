@@ -478,3 +478,53 @@ const str = boolean.toString();
 console.info(str);
 console.info(`typeof str ${typeof str}`);
 ```
+
+## Map
+
+- `Map` merupakan representasi dari struktur data key-value.
+- `Map` mirip dnegan tipe data object, hanya saja pada `Map`, semua method untuk manipulasi data disediakan.
+- `Map` mengikuti kontrak iterable, sehingga bisa di iterasi secara default.
+- [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
+
+### Perbedaan Map dan Object
+
+|                              Map                               |                                        Object                                        |
+| :------------------------------------------------------------: | :----------------------------------------------------------------------------------: |
+|               Pertama dibuat, tidak memiliki key               | Karena memiliki prototype, jadi bisa jadi memiliki default key ketika pertama dibuat |
+|                   Key bisa tipe data apapun                    |                             Key hanya string atau symbol                             |
+| Jumlah key bisa diketahui dengan mudah dengan attribute `size` |                Tidak bisa diketahui, harus manual menggunakan iterasi                |
+|         Secara default tidak bisa dikonversi ke `JSON`         |                      Bisa dikonversi ke `JSON` secara otomatis                       |
+
+### Map Instance Mathod & Property
+
+|      Method & Property      |              Keterangan              |
+| :-------------------------: | :----------------------------------: |
+|           `size`            |             Panjang Map              |
+|          `clear()`          |       Menghapus semua isi Map        |
+|        `delete(key)`        |  Menghapus data Map berdasarkan key  |
+|     `get(key) : value`      | Mendapatkan data Map berdasarkan key |
+|    `has(key) : boolean`     | Mengecek apakah Map berisi data key  |
+|      `set(key, value)`      | Mengubah data Map dengan key = value |
+| `forEach((key, value) => )` |        Melakukan iterasi Map         |
+
+### Kode : Map
+
+```javascript
+// kode Map
+const map = new Map();
+
+map.set('Name', 'Yusril Arzaqi');
+map.set('Address', 'Indonesia');
+
+console.info(map);
+console.info(map.get('Name'));
+console.info(map.get('Address'));
+
+for (const element of map) {
+	console.info(`${element[-1]} : ${element[1]}`);
+}
+
+map.forEach((value, key) => {
+	console.info(`${key} : ${value}`);
+});
+```
