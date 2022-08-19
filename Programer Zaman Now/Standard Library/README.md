@@ -219,3 +219,74 @@ const numbers = [0, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 console.info(numbers.reduce((result, value) => result + value)); // 54
 console.info(numbers.reduceRight((result, value) => result + value)); // 54
 ```
+
+## Object
+
+- Tipe data object sudah sering kita bahas di JavaScript Dasar dan JavaScript OOP.
+- Pada materi ini, kita akan bahas banyak static method yang terdapat pada Object.
+- [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
+
+### Object Freeze & Seal
+
+- Secara default, object bisa diubah atau dihapus properties nya.
+- Jika kita ingin mengubah sebuah object menjadi object yang tidak bisa diubah atau dihapus, kita bisa menggunakan beberapa static method.
+- `Object.freeze()` digunakan untuk mengubah object menjadi object yang tidak bisa diubah atau dihapus attribute nya.
+- `Object.seal()` digunakan untuk mengubah object yang tidak bisa dihapus attribute nya.
+
+### Kode : Object Freeze
+
+```javascript
+const person = {
+	firstName: 'Yusril',
+	lastName: 'Arzaqi',
+};
+
+// Object.freeze(person);
+Object.seal(person);
+
+person.firstName = 'Diubah'; // tidak berubah
+delete person.firstName; // tidak berubah
+console.info(person);
+```
+
+### Object Assign
+
+- Kadang kita ada kasus menggabungkan semua attribute dari sebuah object ke object lain.
+- Hal ini bisa kita lakukan dengan menggunakan `Object.assign(target, source)`
+
+### Kode : Object Assign
+
+```javascript
+// Object Assign
+const target = { firstName: 'Yusril' };
+const source = {
+	firstName: 'Adam',
+	lastName: 'Arzaqi',
+};
+
+Object.assign(target, source);
+console.info(target);
+console.info(source);
+```
+
+### Object Property Name & Value
+
+- Object juga memiliki static method untuk digunakan mengambil mengambil semua properties names dan values.
+- `Object.values()` digunakan untuk mengambil semua property value.
+- `Object.getPropertyNames()` digunakan untuk mengambil semua property name.
+
+### Kode : Object Property Name & Value
+
+```javascript
+const person = {
+	firstName: 'Yusril',
+	lastName: 'Arzaqi',
+};
+
+console.info(Object.values(person));
+console.info(Object.getOwnPropertyNames(person));
+```
+
+### Dan Function lain-lain
+
+- [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
