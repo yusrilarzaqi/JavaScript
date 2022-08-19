@@ -310,12 +310,12 @@ console.info(Object.getOwnPropertyNames(person));
 ```javascript
 // JSON
 const person = {
-  firstName: 'Yusril',
-  lastName: 'Arzaqi',
-  address: {
-    contry: 'Indonesia',
-    city: 'Semarang',
-  },
+	firstName: 'Yusril',
+	lastName: 'Arzaqi',
+	address: {
+		contry: 'Indonesia',
+		city: 'Semarang',
+	},
 };
 
 const json = JSON.stringify(person);
@@ -323,4 +323,23 @@ const personAgain = JSON.parse(json);
 
 console.info(json);
 console.info(personAgain);
+```
+
+## BigInt
+
+- BigInt merupakan tipe data `Number` yang bisa mencakup data angka lebih dari `Number.MAX_SAFE_INTEGER`.
+- Untuk kasus number yang lebih dari itu, sangat disarankan menggunakan tipe data BigInt.
+- Cara penggunaan BigInt
+- [BigInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refrence/Global_Objects/BigInt)
+
+### Kode : BigInt
+
+```javascript
+const a = BigInt(Number.MAX_SAFE_INTEGER);
+const b = BigInt(Number.MAX_SAFE_INTEGER);
+
+const c = a + b;
+
+console.info(c);
+console.info(typeof c);
 ```
