@@ -343,3 +343,96 @@ const c = a + b;
 console.info(c);
 console.info(typeof c);
 ```
+
+## Date
+
+- JavaScript memiliki tipe data untuk representasi waktu dan tanggal, yaitu `Date`.
+- `Date` merupakan representasi milisecond sejak tanggal 1 January 1970, atau dikenal dengan Epoch & Unix Timestamp.
+- [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refrence/Global_Objects/Date)
+
+### Membuat Object Date
+
+Untuk membuat object Date, kita bisa menggunakan `new Date()`, dimana terdapat constructor parameter.
+
+|                            Function                             |                  Keterangan                  |
+| :-------------------------------------------------------------: | :------------------------------------------: |
+|                          `new Date()`                           |            Membuat date saat ini             |
+|                  `new Date(year, month, date)`                  |            Membuat dengan tanggal            |
+| `new Date(year, month, date?, hour?, minute?, second?, milis?)` | Membuat date dnegan parameter sampai `milis` |
+|                      `new Date(Timestamp)`                      | Membuat date dari epoch atau unix timestamp  |
+
+### Kode : Membuat Object Date
+
+```javascript
+const date1 = new Date();
+console.info(date1);
+
+const date2 = new Date(2022, 08, 19);
+console.info(date2);
+
+const date3 = new Date(2022, 08, 19, 1, 0, 0, 0);
+console.info(date3);
+
+const date4 = new Date(1660903035);
+console.info(date4);
+```
+
+### Epoch & Unix TimeStamp
+
+- Dalam menggunakan tipe data waktu, biasanya disemua bahasa pemrograman akan mendukung yang namanya epoch & unix timestamp
+- Epoch & Unix timestamp merupakan hitungan miliseconds setelah 1 January 1970.
+- JavaScript pun mendukung pembuatan waktu dalam bentuk epoch dan unix timestamp.
+- Untuk mendapatkan waktu saat ini dalam epoch & unix timestamp, kita bisa menggunakan `Date.now()`
+- Untuk mengubah dari object date ke epoch & unix timestamp, kita bisa menggunakan function `getTime()`
+
+### Kode : Epoch & Unix TimeStamp
+
+- Kita juga bisa melakukan parsing membuat date dari string menggunakan method `Date.parse(value)`.
+- Format string harus `YYYY-MM-DDTHH:mm:ss.sssZ`.
+- Dimana jika kita hanya membuat date berisi tanggal saja, kita cukup gunakan `YYYY-MM-DD`.
+- Jika date dengan tanggal, waktu, dan timezone, gunakan `YYYY-MM-DDTHH:mm:ss.sssZ`.
+- Hasil parsing adalah unix timestamp, bukan object date.
+
+### Format Date
+
+| Format Date |        Keterangan         |
+| :---------: | :-----------------------: |
+|    YYYY     |           Tahun           |
+|     MM      |           Bulan           |
+|     DD      |          Tanggal          |
+|      T      | Pemisah tanggal dan waktu |
+|     HH      |            Jam            |
+|     mm      |           Menit           |
+|     ss      |           Detik           |
+|     sss     |         Milidetik         |
+|      Z      |         Timezone          |
+
+### Kode : Fomat Date
+
+```javascript
+// Fomat Date  YYYY-MM-DDTHH:mm:ss.sssZ
+
+const date = new Date('2022-08-19T07:00:00.000Z');
+console.info(date.getTime());
+```
+### Date Getter dan Setter
+
+- Date juga memiliki banyak sekali method untuk mendapatkan informasi date dan juga mengubah informasi date, atau istilahnya adalah getter & setter.
+- [Date Instance Methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#instance_methods)
+
+### Kode : Date Getter dan Setter
+
+```javascript
+const date = new Date();
+date.setFullYear(2022);
+
+console.info(date.getFullYear());
+console.info(date.getMonth());
+console.info(date.getDate());
+console.info(date.getHours());
+console.info(date.getMinutes());
+console.info(date.getSeconds());
+console.info(date.getMilliseconds());
+console.info(date.getTimezoneOffset());
+```
+
