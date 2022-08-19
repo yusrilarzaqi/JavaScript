@@ -456,3 +456,25 @@ console.info(Math.round(10.5)); // 11 dibulatakan ke atas
 console.info(Math.round(10.3)); // 10 dibulatakan ke atas
 console.info(Math.floor(10.5)); // 10 dibulatakan ke bawah
 ```
+
+## Boolean
+
+- `Boolean` merupakan wrapper class untuk tipe primitif boolean.
+- `Boolean` memiliki method `toString()` untuk mengkonversi ke `String`.
+- Dan memiliki method `valueOf()` untuk mengkonversi ke tipe boolean primitif.
+- [Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)
+
+### Kode : Boolean
+
+```javascript
+// Boolean
+const boolean = Boolean(true);
+
+console.info(`typeof boolean ${typeof boolean}`);
+console.info(boolean);
+console.info(boolean.valueOf());
+
+const str = boolean.toString();
+console.info(str);
+console.info(`typeof str ${typeof str}`);
+```
