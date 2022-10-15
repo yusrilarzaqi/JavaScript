@@ -14,6 +14,9 @@
 - Array
 - Object
 - JSON
+- Map
+- Set
+- Symbol
 - Dan lain-lain
 
 ## Number
@@ -548,3 +551,142 @@ map.forEach((value, key) => {
 | `forEach(value => )` |       Melakukan iterasi Set        |
 
 ### Kode : Set
+
+```javascript
+// Kode Set
+const set = new Set();
+
+set.add('Yusril');
+set.add('Yusril');
+set.add('Arzaqi');
+set.add('Arzaqi');
+
+console.info(set);
+set.forEach((value) => console.info(value));
+```
+
+## Symbol
+
+- `Symbol` merupakan tipe data yang digaransi akan selalu unique setiap kali kita membuat data symbol.
+- `Symbol` kadang banyak digunakan untuk membuat key pada object.
+- [Symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)
+
+### Kode : Symbol
+
+```javascript
+// Kode Symbol
+const firstName = Symbol();
+const lastName = Symbol();
+
+const person = {};
+person[firstName] = 'Yusril';
+person[lastName] = 'Arzaqy';
+
+console.info(person[firstName]);
+console.info(person[lastName]);
+```
+
+### Symbol For
+
+- Kadang agak sulit membuat symbol harus selalu menggunakan variable.
+- Pembuatan symbol juga bisa menggunakan static method `Symbol.for(key)`.
+- Jika kita menggunakan key yang sama, `Symbol` , yang sama akan selalu dikembalikan.
+
+### Kode : Symbol For
+
+```javascript
+const person = {};
+person[Symbol.for('firstName')] = 'Yusril';
+person[Symbol.for('lastName')] = 'Arzaqy';
+
+console.info(person);
+console.info(person[Symbol.for('firstName')]);
+console.info(person[Symbol.for('lastName')]);
+```
+
+## RegExp
+
+- **RegExp** merupakan implementasi dari regular expression di JavaScript.
+- Regular expression merupakan fitur untuk mencari text dengan pola.
+- Membuat regular expression di JavaScript bisa dilakukan dengan dua cara, yaitu menggunakan literal notation atau membuat object **RegExp**.
+- [RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
+
+### Membuat RegExp
+
+```javascript
+// Kode : RegExp
+const regex1 = /[a]/;
+const regex2 = new RegExp('[a]');
+const regex3 = new RegExp(/[a]/);
+
+console.info(regex1);
+console.info(regex2);
+console.info(regex3);
+```
+
+### RegExp Instance Method
+
+|     Instance Method     |                                            Keterangan                                            |
+| :---------------------: | :----------------------------------------------------------------------------------------------: |
+| `exec(value) : result`  | Exekusi regex, jika menemukan datta sesuai pola, maka kembalian result nya, jika tidak maka null |
+| `test(value) : boolean` |     Exekusi regex, jika menemukan data sesuai pola, maka return true, jika tidak maka false      |
+
+### RegExp Modifier
+
+RegExp memiliki modifier untuk mengubah sifat cara pencarian
+
+| Modifier |                                            Keterangan                                             |
+| :------: | :-----------------------------------------------------------------------------------------------: |
+|   `i`    |                                  Regex menjadi incase sensitive                                   |
+|   `g`    | Pencarian dilakukan secara global, secara default setelah menemukan data, pencarian akan berhenti |
+|   `m`    |                        Multiple, pencarian dilakukan di tiap baris (enter)                        |
+
+### Kode : RegExp Modifier
+
+```javascript
+const name = 'Yusril\nArzaqi\nyusril';
+const regex1 = /yusril/g;
+const regex2 = /Arzaqi/gi;
+
+let result;
+while ((result = regex1.exec(name)) !== null) console.info(result);
+
+while ((result = regex2.exec(name)) !== null) console.info(result);
+```
+
+### Fitur RegExp Lainnya
+
+- Assersions : inikasi awal dan akhir teks [Assertions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Assertions)
+- Character Classes : membedakan anatra huruf dan angka [Character Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes)
+- Group dan Range : melakukan grouping atau range huruf atau angka [Group and Ranges](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Backreferences)
+- Quantifiers : menentukan jumlah huruf atau angka [Quantifiers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Quantifiers)
+
+### Kode : Contoh Fitur RegExp
+
+```javascript
+const regex = /s[aiueo]/gi;
+const text =
+	'Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.';
+
+while ((result = regex.exec(text)) !== null) {
+	console.info(result);
+}
+```
+
+### Regular Expression di String
+
+Di JavaScript, tipe data String memiliki instance method yang dapat menfaatkan RegExp untuk melakukan pencarian.
+
+|       String Method        |                     Keterangan                      |
+| :------------------------: | :-------------------------------------------------: |
+|   `match(reges) : Array`   |     Mencari semua data yang sesuai dengan regex     |
+|   `search(regex) :index`   |     Mencari index data yang sesuai dengan regex     |
+|  `replace(regex, value)`   | Mengubah data dengan value yang sesuai dengan regex |
+| `replaceAll(regex, value)` | Mengubah semua data dengan value yang sesuai regex  |
+|   `split(regex) : Array`   |            Memotong string dengan regex             |
+
+### Kode : Regular Expression di String
+
+```javascript
+
+```
