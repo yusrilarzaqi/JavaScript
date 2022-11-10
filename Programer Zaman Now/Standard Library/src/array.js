@@ -76,13 +76,13 @@
 */
 
 {
-	// Array Transform
-	const names = 'Yusril Arzaqi'.split(' ');
-	console.info(names.map((value) => value.toUpperCase())); // menjadikan toUpperCase
-	console.info(names.reduce((before, value) => before + ' ' + value)); // mengabungkan array to string
-	console.info(names.reduceRight((before, value) => before + ' ' + value)); // mengabungkan array to string terbalik
+  // Array Transform
+  const names = "Yusril Arzaqi".split(" ")
+  console.info(names.map((value) => value.toUpperCase())) // menjadikan toUpperCase
+  console.info(names.reduce((before, value) => before + " " + value)) // mengabungkan array to string
+  console.info(names.reduceRight((before, value) => before + " " + value)) // mengabungkan array to string terbalik
 
-	const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-	console.info(numbers.reduce((result, value) => result + value)); // 55
-	console.info(numbers.reduceRight((result, value) => result + value)); // 55
+  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  console.info(numbers.reduce((result, value) => result + value)) // 55
+  console.info(numbers.reduceRight((result, value) => result + value)) // 55
 }

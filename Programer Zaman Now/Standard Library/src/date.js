@@ -36,15 +36,15 @@
 */
 
 {
-	const date = new Date();
-	date.setFullYear(2022);
+  const date = new Date()
+  date.setFullYear(2022)
 
-	console.info(date.getFullYear());
-	console.info(date.getMonth());
-	console.info(date.getDate());
-	console.info(date.getHours());
-	console.info(date.getMinutes());
-	console.info(date.getSeconds());
-	console.info(date.getMilliseconds());
-	console.info(date.getTimezoneOffset());
+  console.info(date.getFullYear())
+  console.info(date.getMonth())
+  console.info(date.getDate())
+  console.info(date.getHours())
+  console.info(date.getMinutes())
+  console.info(date.getSeconds())
+  console.info(date.getMilliseconds())
+  console.info(date.getTimezoneOffset())
 }

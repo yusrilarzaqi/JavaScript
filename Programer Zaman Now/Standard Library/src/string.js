@@ -1,9 +1,9 @@
-const names = 'Yusril Arzaqi';
+const names = "Yusril Arzaqi"
 
-console.info(names.length);
-console.info(names.toLowerCase());
-console.info(names.toUpperCase());
-console.info(names.split(' '));
+console.info(names.length)
+console.info(names.toLowerCase())
+console.info(names.toUpperCase())
+console.info(names.split(" "))
 
-const input = '              input data             ';
-console.info(input.trim());
+const input = "              input data             "
+console.info(input.trim())

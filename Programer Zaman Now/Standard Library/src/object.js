@@ -31,12 +31,12 @@
 */
 
 {
-	// Object Property Name & Value
-	const person = {
-		firstName: 'Yusril',
-		lastName: 'Arzaqi',
-	};
+  // Object Property Name & Value
+  const person = {
+    firstName: "Yusril",
+    lastName: "Arzaqi",
+  }
 
-	console.info(Object.values(person));
-	console.info(Object.getOwnPropertyNames(person));
+  console.info(Object.values(person))
+  console.info(Object.getOwnPropertyNames(person))
 }

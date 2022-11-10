@@ -688,5 +688,58 @@ Di JavaScript, tipe data String memiliki instance method yang dapat menfaatkan R
 ### Kode : Regular Expression di String
 
 ```javascript
+const string =
+	'Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.';
 
+console.info(string.match(/s[aiueo]/gi));
+console.info(string.search(/s[aiueo]/gi));
+
+// di replace semua karena regex
+console.info(string.replace(/s[aiueo]/gi), 'XXXX');
+console.info(string.replaceAll(/s[aiueo]/gi), 'XXXX');
+console.info(string.split(/e/gi));
 ```
+
+## Proxy
+
+- Proxy merupakan fitur yang bisa digunakan sebagai wakil sebuah data.
+- Dengan menggunakan proxy, semua interaksi ke data akan selalu melalui Proxy terlebih dahulu.
+- Dengan ini, kita bisa melakukan apapun sebelum interaksi dilakukan ke data yang dituju.
+- [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
+
+### Proxy Handler
+
+- Pembuatan proxy perlu menggunakan handler, dimana dimana handler, kita bisa membuat function yang dinamakan interceptor yang digunakan ketika mengambil data atau mengubah data ke target.
+- Untuk membuat Proxy, kita bisa menggunakan `new Proxy(target, handler)`.
+
+### Kode : Membuat Handler
+
+```javascript
+const target = {};
+
+const handler = {
+	get: function (target, property) {
+		return target[property];
+	},
+	set: function (target, property, value) {
+		target[property] = value;
+	},
+};
+```
+
+### Kode : Membuat Proxy
+
+```javascript
+const proxy = new Proxy(target, handler);
+proxy.firstName = 'Yusril';
+proxy.lastName = 'Arzaqi';
+
+console.info(proxy.firstName);
+console.info(proxy.lastName);
+```
+
+### Proxy dan Handler
+
+- Saat kita mengubah data proxy, secara otomatis data akan dikirim ke target melalui handler dengan memanggul function `set(target, property, value)`.
+- Saat kita mengambil data proxy, secara otomatis data akan diambil dari target melalui handler dengan memanggil function `get(target, property)`.
+- Artinya, jika kita ingin melakukan suatu sebelum dan setelahnya, bisa kita lakukan di handler.
