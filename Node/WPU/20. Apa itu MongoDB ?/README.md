@@ -10,7 +10,7 @@ Salah satu tipe dari **NoSQL Database**
 
 ## NoSQL Database
 
-- Not Only SQL
+- "**N**ot **O**nly" SQL
 - Schemales / Flexible Schema
 - Denormalization
 - Non-relational Database
@@ -19,28 +19,24 @@ Salah satu tipe dari **NoSQL Database**
 ## Tipe NoSQL Database
 
 - Key-value Store
-  * Redis
+  - Redis
 - Dokument Based
-  * MongoDB, CouchDB
+  - MongoDB, CouchDB
 - Colimn-oriented Database
-  * HBase, Cassandra
+  - HBase, Cassandra
 - Graph Database
-  * Neo4j
+  - Neo4j
 
 ## Terminilogi pada SQL vs NoSQL
 
-- table        | collection
-- row/record   | document/object
+- table | collection
+- row/record | document/object
 - column/field | field
 
 ## Konsep Embedded Document (Denormalization)
-
 
 ## Kenapa MongoDB ?
 
 - JSON (BSON)
 - Javascript
 - MERN, MEVN, MEAN
-
-
-
