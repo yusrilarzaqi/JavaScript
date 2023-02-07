@@ -5,43 +5,44 @@ const fs = require('fs');
 
 /* Membuat folder data */
 const dirPath = 'data/';
-if(!fs.existsSync(dirPath)) {
-  fs.mkdirSync(dirPath);
-};
+if (!fs.existsSync(dirPath)) {
+	fs.mkdirSync(dirPath);
+}
 
 /* Membuat file contacts.json jika belum ada */
 const dataPath = 'data/contacts.json';
-if(!fs.existsSync(dataPath)) {
-  fs.writeFileSync(dataPath, '[]', 'utf-8');
-};
+if (!fs.existsSync(dataPath)) {
+	fs.writeFileSync(dataPath, '[]', 'utf-8');
+}
 
 const loadContact = () => {
-  const file= fs.readFileSync('data/contacts.json', 'utf-8');
-  return JSON.parse(file);
+	const file = fs.readFileSync('data/contacts.json', 'utf-8');
+	return JSON.parse(file);
 };
 
 const findContact = (nama) => {
-  const contacts = loadContact();
-  return contacts.find((contact) => contact.nama.toLowerCase() === nama.toLowerCase());
+	const contacts = loadContact();
+	return contacts.find(
+		(contact) => contact.nama.toLowerCase() === nama.toLowerCase()
+	);
 };
 
-const saveContacts = contacts => {
-  fs.writeFileSync('data/contacts.json', JSON.stringify(contacts));
+const saveContacts = (contacts) => {
+	fs.writeFileSync('data/contacts.json', JSON.stringify(contacts));
 };
 
-const addContact = contact => {
-  const contacts = loadContact();
-  contacts.push(contact);
-  saveContacts(contacts);
+const addContact = (contact) => {
+	const contacts = loadContact();
+	contacts.push(contact);
+	saveContacts(contacts);
 };
 
-const cekDuplikat = nama => {
-  const contacts = loadContact();
-  return contacts.find(contact => contact.nama === nama);
-}
+const cekDuplikat = (nama) => {
+	const contacts = loadContact();
+	return contacts.find((contact) => contact.nama === nama);
+};
 
-module.exports = {loadContact, findContact, addContact, cekDuplikat};
-
+module.exports = { loadContact, findContact, addContact, cekDuplikat };
 
 // const simpanContact = (nama, email, noHp) =>  {
 //   const contact ={nama, email, noHp};
@@ -73,7 +74,6 @@ module.exports = {loadContact, findContact, addContact, cekDuplikat};
 //     return false;
 //   }
 
-
 //   contacts.push(contact);
 
 //   fs.writeFileSync('data/contacts.json', JSON.stringify(contacts));
@@ -102,7 +102,7 @@ module.exports = {loadContact, findContact, addContact, cekDuplikat};
 //     );
 //     return false
 //   }
-  
+
 //   console.log(chalk.blue.inverse.bold(`Nama : ${contact.nama}`));
 //   console.log(contact.noHp);
 //   if(contact.email) {
@@ -126,5 +126,3 @@ module.exports = {loadContact, findContact, addContact, cekDuplikat};
 //     chalk.white.green.inverse(`Data contact ${nama} berhasil dihapus`)
 //   );
 // }
-
-
