@@ -1,1 +1,13 @@
-[{"nama":"Yusril Arzaqi","noHp":"0888169108","email":"arzaqiyusril@gmail.com"},{"nama":"Bimo Alamsyah","noHp":"0888169104","email":"bimolam@gmail.com"},{"nama":"Bukhori","email":"bukhori@gmail.com","noHp":"088138144"}]
+[
+	{
+		"nama": "Yusril Arzaqi",
+		"noHp": "0888169108",
+		"email": "arzaqiyusril@gmail.com"
+	},
+	{
+		"nama": "Bimo Alamsyah",
+		"noHp": "0888169104",
+		"email": "bimolam@gmail.com"
+	},
+	{ "nama": "Bukhori", "email": "bukhori@gmail.com", "noHp": "088138144" }
+]
